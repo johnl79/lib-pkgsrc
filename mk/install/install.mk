@@ -191,6 +191,7 @@ _INSTALL_ALL_TARGETS+=		pre-install-script
 _INSTALL_ALL_TARGETS+=		pre-install
 _INSTALL_ALL_TARGETS+=		do-install
 _INSTALL_ALL_TARGETS+=		post-install
+_INSTALL_ALL_TARGETS+=		post-install-smf
 _INSTALL_ALL_TARGETS+=		plist
 .if !empty(STRIP_DEBUG:M[Yy][Ee][Ss])
 _INSTALL_ALL_TARGETS+=		install-strip-debug
@@ -334,6 +335,20 @@ pre-install:
 .endif
 .if !target(post-install)
 post-install:
+	@${DO_NADA}
+.endif
+
+######################################################################
+### post-install-smf (PUBLIC, override)
+######################################################################
+### post-install-smf is a special target to add SMF manifest and
+### (optionally) method file to a package, to support SMF on SunOS
+### operating systems
+###
+.PHONY: post-install-smf
+
+.if !target(post-install-smf)
+post-install-smf:
 	@${DO_NADA}
 .endif
 
