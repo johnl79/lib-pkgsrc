@@ -96,6 +96,8 @@ INSTALLATION_DIRS+=	share/locales
 INSTALLATION_DIRS+=	${EGDIR}
 # INSTALLATION_DIRS+=	${DOCDIR}
 
+LDFLAGS.SunOS+=		-lsocket -lnsl
+
 pre-install:
 	${RM} -f ${WRKSRC}/spectrumctl/spectrumctl.py.orig
 	${RM} -f ${WRKSRC}/spectrumctl/spectrum/env.py.orig
