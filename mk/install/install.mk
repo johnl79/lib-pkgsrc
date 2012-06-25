@@ -41,6 +41,8 @@
 #	beginning of the install phase. These directories are relative
 #	to ${PREFIX}. As a convenience, a leading man/ is transformed
 #	to ${PKGMANDIR}, to save package authors from typing too much.
+#	Additionally, in the MULTIARCH case, ${{BIN,LIB}ARCHDIR} will
+#	be expanded to all supported MULTIARCH_ABIS.
 #
 # AUTO_MKDIRS
 # INSTALLATION_DIRS_FROM_PLIST
@@ -178,7 +180,11 @@ _INSTALL_ALL_TARGETS+=		install-check-umask
 .if empty(CHECK_FILES:M[nN][oO]) && !empty(CHECK_FILES_SUPPORTED:M[Yy][Ee][Ss])
 _INSTALL_ALL_TARGETS+=		check-files-pre
 .endif
+.if defined(_MULTIARCH)
+_INSTALL_ALL_TARGETS+=		install-makedirs-multi
+.else
 _INSTALL_ALL_TARGETS+=		install-makedirs
+.endif
 .if defined(INSTALLATION_DIRS_FROM_PLIST) && \
 	!empty(INSTALLATION_DIRS_FROM_PLIST:M[Yy][Ee][Ss])
 _INSTALL_ALL_TARGETS+=		install-dirs-from-PLIST
@@ -188,9 +194,15 @@ _INSTALL_ALL_TARGETS+=		install-dirs-from-PLIST
 .if ${_USE_DESTDIR} == "no"
 _INSTALL_ALL_TARGETS+=		pre-install-script
 .endif
+.if defined(_MULTIARCH)
+_INSTALL_ALL_TARGETS+=		pre-install-multi
+_INSTALL_ALL_TARGETS+=		do-install-multi
+_INSTALL_ALL_TARGETS+=		post-install-multi
+.else
 _INSTALL_ALL_TARGETS+=		pre-install
 _INSTALL_ALL_TARGETS+=		do-install
 _INSTALL_ALL_TARGETS+=		post-install
+.endif
 _INSTALL_ALL_TARGETS+=		plist
 .if !empty(STRIP_DEBUG:M[Yy][Ee][Ss])
 _INSTALL_ALL_TARGETS+=		install-strip-debug
@@ -335,6 +347,16 @@ pre-install:
 .if !target(post-install)
 post-install:
 	@${DO_NADA}
+.endif
+
+.if defined(_MULTIARCH)
+.  for tgt in install-makedirs pre-install do-install post-install
+.PHONY: ${tgt}-multi
+${tgt}-multi:
+.    for _abi_ in ${MULTIARCH_ABIS}
+	@${MAKE} ${MAKE_FLAGS} ABI=${_abi_} WRKSRC=${WRKSRC}-${_abi_} ${tgt}
+.    endfor
+.  endfor
 .endif
 
 ######################################################################

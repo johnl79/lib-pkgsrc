@@ -730,8 +730,13 @@ ${_COOKIE.wrapper}:
 ${_COOKIE.wrapper}: real-wrapper
 .endif
 
+.if defined(_MULTIARCH)
+_WRAPPER_TARGETS=	do-wrapper-multi
+.else
+_WRAPPER_TARGETS=	do-wrapper
+.endif
 .PHONY: real-wrapper
-real-wrapper: wrapper-message wrapper-vars pre-wrapper do-wrapper post-wrapper wrapper-cookie error-check
+real-wrapper: wrapper-message wrapper-vars pre-wrapper ${_WRAPPER_TARGETS} post-wrapper wrapper-cookie error-check
 
 .PHONY: wrapper-message
 wrapper-message:
@@ -742,6 +747,14 @@ wrapper-message:
 .if !target(do-wrapper)
 do-wrapper: generate-wrappers
 	@${DO_NADA}
+.endif
+
+.if defined(_MULTIARCH)
+.PHONY: do-wrapper-multi
+do-wrapper-multi:
+.  for _abi_ in ${MULTIARCH_ABIS}
+	@${MAKE} ${MAKE_FLAGS} ABI=${_abi_} WRKSRC=${WRKSRC}-${_abi_} do-wrapper
+.  endfor
 .endif
 
 .if !target(pre-wrapper)

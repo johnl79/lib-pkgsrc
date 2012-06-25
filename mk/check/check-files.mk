@@ -97,7 +97,13 @@ CHECK_FILES_SKIP+=	${PREFIX}/.*/fonts.cache-1
 .endif
 
 # Mutable charset.alias file
+.if defined(_MULTIARCH)
+.  for _abi_ in ${MULTIARCH_ABIS}
+CHECK_FILES_SKIP+=	${PREFIX}/lib${LIBARCHSUFFIX.${_abi_}}/charset.alias
+.  endfor
+.else
 CHECK_FILES_SKIP+=	${PREFIX}/lib/charset.alias
+.endif
 
 # Mutable locale.alias file
 CHECK_FILES_SKIP+=	${PREFIX}/share/locale/locale.alias

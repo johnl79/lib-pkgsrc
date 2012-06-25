@@ -371,7 +371,7 @@ BUILDLINK_LDFLAGS.${_pkg_}?=	# empty
 BUILDLINK_LIBS.${_pkg_}?=	# empty
 BUILDLINK_AUTO_DIRS.${_pkg_}?=	yes
 BUILDLINK_INCDIRS.${_pkg_}?=	include
-BUILDLINK_LIBDIRS.${_pkg_}?=	lib
+BUILDLINK_LIBDIRS.${_pkg_}?=	lib${LIBARCHSUFFIX}
 .  if !empty(BUILDLINK_DEPMETHOD.${_pkg_}:Mfull)
 BUILDLINK_RPATHDIRS.${_pkg_}?=	${BUILDLINK_LIBDIRS.${_pkg_}}
 .  else
@@ -809,7 +809,7 @@ _BLNK_PASSTHRU_DIRS+=	${BUILDLINK_PASSTHRU_DIRS}
 # automatically added to all of the search paths.  Also strip out
 # ${LOCALBASE} and ${X11BASE} to prevent silly mistakes.
 #
-_BLNK_PASSTHRU_DIRS:=	${_BLNK_PASSTHRU_DIRS:N/usr:N/usr/lib:N/usr/include:N${LOCALBASE}:N${X11BASE}}
+_BLNK_PASSTHRU_DIRS:=	${_BLNK_PASSTHRU_DIRS:N/usr:N/usr/lib${LIBARCHSUFFIX}:N/usr/include:N${LOCALBASE}:N${X11BASE}}
 #
 # Allow all directories in the library subdirectories listed for each
 # package to be in the runtime library search path.
@@ -857,7 +857,7 @@ _BLNK_MANGLE_DIRS+=	${WRKDIR}
 _BLNK_MANGLE_DIRS+=	${_BLNK_PASSTHRU_DIRS}
 _BLNK_MANGLE_DIRS+=	${_BLNK_PASSTHRU_RPATHDIRS}
 _BLNK_MANGLE_DIRS+=	/usr/include
-_BLNK_MANGLE_DIRS+=	/usr/lib
+_BLNK_MANGLE_DIRS+=	/usr/lib${LIBARCHSUFFIX}
 .if ${PKG_INSTALLATION_TYPE} == "pkgviews"
 _BLNK_MANGLE_DIRS+=	${PREFIX}
 .endif
@@ -886,7 +886,7 @@ _BLNK_PROTECT_DIRS+=	${WRKDIR}
 _BLNK_PROTECT_DIRS+=	${_BLNK_PASSTHRU_DIRS}
 
 _BLNK_UNPROTECT_DIRS+=	/usr/include
-_BLNK_UNPROTECT_DIRS+=	/usr/lib
+_BLNK_UNPROTECT_DIRS+=	/usr/lib${LIBARCHSUFFIX}
 .if ${PKG_INSTALLATION_TYPE} == "pkgviews"
 _BLNK_UNPROTECT_DIRS+=	${PREFIX}
 .endif
@@ -956,7 +956,7 @@ _BLNK_TRANSFORM+=	mangle:/usr/lib/../libx32:/usr/libx32
 # aren't part of the normal header or library search paths).
 #
 _BLNK_TRANSFORM+=	opt-sub:-I/usr/include:-I${_BLNK_MANGLE_DIR./usr/include}
-_BLNK_TRANSFORM+=	opt-sub:-L/usr/lib:-L${_BLNK_MANGLE_DIR./usr/lib}
+_BLNK_TRANSFORM+=	opt-sub:-L/usr/lib${LIBARCHSUFFIX}:-L${_BLNK_MANGLE_DIR./usr/lib${LIBARCHSUFFIX}}
 #
 # Change any buildlink directories in runtime library search paths into
 # the canonical actual installed paths.
@@ -976,7 +976,7 @@ _BLNK_TRANSFORM+=	rpath:${_dir_}:${_BLNK_MANGLE_DIR.${_dir_}}
 # Protect /usr/lib/* as they're all allowed to be specified for the
 # runtime library search path.
 #
-_BLNK_TRANSFORM+=	sub-rpath:/usr/lib:${_BLNK_MANGLE_DIR./usr/lib}
+_BLNK_TRANSFORM+=	sub-rpath:/usr/lib${LIBARCHSUFFIX}:${_BLNK_MANGLE_DIR./usr/lib${LIBARCHSUFFIX}}
 #
 # Change references to ${DEPOTBASE}/<pkg> into ${LOCALBASE} so that
 # "overwrite" packages think headers and libraries for "pkgviews" packages

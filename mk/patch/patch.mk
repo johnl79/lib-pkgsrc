@@ -95,9 +95,15 @@ ${_COOKIE.patch}: real-patch
 ###
 _REAL_PATCH_TARGETS+=	patch-message
 _REAL_PATCH_TARGETS+=	patch-vars
+.if defined(_MULTIARCH)
+_REAL_PATCH_TARGETS+=	pre-patch-multi
+_REAL_PATCH_TARGETS+=	do-patch-multi
+_REAL_PATCH_TARGETS+=	post-patch-multi
+.else
 _REAL_PATCH_TARGETS+=	pre-patch
 _REAL_PATCH_TARGETS+=	do-patch
 _REAL_PATCH_TARGETS+=	post-patch
+.endif
 _REAL_PATCH_TARGETS+=	patch-cookie
 _REAL_PATCH_TARGETS+=	error-check
 
@@ -154,6 +160,16 @@ pre-patch:
 .if !target(post-patch)
 post-patch:
 	@${DO_NADA}
+.endif
+
+.if defined(_MULTIARCH)
+.  for tgt in pre-patch do-patch post-patch
+.PHONY: ${tgt}-multi
+${tgt}-multi:
+.    for _abi_ in ${MULTIARCH_ABIS}
+	@${MAKE} ${MAKE_FLAGS} ABI=${_abi_} WRKSRC=${WRKSRC}-${_abi_} ${tgt}
+.    endfor
+.  endfor
 .endif
 
 ######################################################################
