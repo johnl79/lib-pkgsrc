@@ -10,7 +10,7 @@ include/readline/tilde.h
 info/history.info
 info/readline.info
 info/rluserman.info
-lib/libhistory.la
-lib/libreadline.la
+lib${LIBARCHSUFFIX}/libhistory.la
+lib${LIBARCHSUFFIX}/libreadline.la
 man/man3/history.3
 man/man3/readline.3

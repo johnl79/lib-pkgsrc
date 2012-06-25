@@ -1,5 +1,5 @@
 @comment $NetBSD: PLIST.shlib,v 1.2 2004/12/24 22:02:38 jlam Exp $
-lib/libcrypto.so
-lib/libcrypto.so.${SHLIB_VERSION}
-lib/libssl.so
-lib/libssl.so.${SHLIB_VERSION}
+lib${LIBARCHSUFFIX}/libcrypto.so
+lib${LIBARCHSUFFIX}/libcrypto.so.${SHLIB_VERSION}
+lib${LIBARCHSUFFIX}/libssl.so
+lib${LIBARCHSUFFIX}/libssl.so.${SHLIB_VERSION}

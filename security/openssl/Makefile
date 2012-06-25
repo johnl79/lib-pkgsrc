@@ -41,6 +41,7 @@ BUILD_DEPENDS+=	p5-Perl4-CoreLibs-[0-9]*:../../devel/p5-Perl4-CoreLibs
 .include "../../mk/compiler.mk"
 
 EXTRACT_USING=		gtar
+USE_MULTIARCH=		bin lib
 USE_TOOLS+=		gmake perl
 TEST_TARGET=		tests
 MAKE_JOBS_SAFE=		no
