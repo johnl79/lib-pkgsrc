@@ -30,11 +30,11 @@ include/ncurses/term_entry.h
 include/ncurses/termcap.h
 include/ncurses/tic.h
 include/ncurses/unctrl.h
-lib/libform.la
-lib/libmenu.la
-lib/libncurses++.la
-lib/libncurses.la
-lib/libpanel.la
+lib${LIBARCHSUFFIX}/libform.la
+lib${LIBARCHSUFFIX}/libmenu.la
+lib${LIBARCHSUFFIX}/libncurses++.la
+lib${LIBARCHSUFFIX}/libncurses.la
+lib${LIBARCHSUFFIX}/libpanel.la
 man/man1/captoinfo.1
 man/man1/clear.1
 man/man1/infocmp.1
