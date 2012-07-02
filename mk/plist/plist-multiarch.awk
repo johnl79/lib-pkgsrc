@@ -41,22 +41,18 @@ BEGIN {
 	split(PLIST_MULTIARCH_ABIS, abis, " ")
 }
 
-PLIST_USE_MULTIARCH && (/[$][{]LIBARCHSUFFIX[}]/ || /[$][{]BINARCHSUFFIX[}]/) {
+PLIST_USE_MULTIARCH && (/[$][{](BIN|LIB)ARCHSUFFIX[}]/) {
 	for (abi in abis) {
-		binvar = "BINARCHSUFFIX_" abis[abi]
-		binval = ENVIRON[binvar]
-		libvar = "LIBARCHSUFFIX_" abis[abi]
-		libval = ENVIRON[libvar]
+		binval = ENVIRON["BINARCHSUFFIX_" abis[abi]]
+		libval = ENVIRON["LIBARCHSUFFIX_" abis[abi]]
 		line = $0
 		gsub(/[$][{]BINARCHSUFFIX[}]/, binval, line)
 		gsub(/[$][{]LIBARCHSUFFIX[}]/, libval, line)
 		print_entry(line)
 	}
 	next
-	print_entry($0)
 }
 
-/[$][{]LIBARCHSUFFIX[}]/ || /[$][{]BINARCHSUFFIX[}]/ {
-	gsub(/[$][{]BINARCHSUFFIX[}]/, "")
-	gsub(/[$][{]LIBARCHSUFFIX[}]/, "")
+/[$][{](BIN|LIB)LIBARCHSUFFIX[}]/ {
+	gsub(/[$][{](BIN|LIB)ARCHSUFFIX[}]/, "")
 }
