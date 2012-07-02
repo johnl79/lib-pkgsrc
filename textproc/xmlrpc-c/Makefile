@@ -20,6 +20,7 @@ MAKE_JOBS_SAFE=		no
 
 USE_LANGUAGES=		c99 c++
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		bin lib
 USE_TOOLS+=		gmake
 GNU_CONFIGURE=		yes
 MAKE_FILE=		GNUmakefile

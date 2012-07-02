@@ -2,8 +2,8 @@
 include/ogg/config_types.h
 include/ogg/ogg.h
 include/ogg/os_types.h
-lib/libogg.la
-lib/pkgconfig/ogg.pc
+lib${LIBARCHSUFFIX}/libogg.la
+lib${LIBARCHSUFFIX}/pkgconfig/ogg.pc
 share/aclocal/ogg.m4
 share/doc/${PKGNAME}/framing.html
 share/doc/${PKGNAME}/index.html

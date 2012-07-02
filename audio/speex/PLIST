@@ -13,10 +13,10 @@ include/speex/speex_preprocess.h
 include/speex/speex_resampler.h
 include/speex/speex_stereo.h
 include/speex/speex_types.h
-lib/libspeex.la
-lib/libspeexdsp.la
-lib/pkgconfig/speex.pc
-lib/pkgconfig/speexdsp.pc
+lib${LIBARCHSUFFIX}/libspeex.la
+lib${LIBARCHSUFFIX}/libspeexdsp.la
+lib${LIBARCHSUFFIX}/pkgconfig/speex.pc
+lib${LIBARCHSUFFIX}/pkgconfig/speexdsp.pc
 man/man1/speexdec.1
 man/man1/speexenc.1
 share/aclocal/speex.m4

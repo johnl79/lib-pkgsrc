@@ -1,8 +1,8 @@
 @comment $NetBSD: PLIST,v 1.7 2010/02/20 03:56:14 joerg Exp $
 include/archive.h
 include/archive_entry.h
-lib/libarchive.la
-lib/pkgconfig/libarchive.pc
+lib${LIBARCHSUFFIX}/libarchive.la
+lib${LIBARCHSUFFIX}/pkgconfig/libarchive.pc
 man/man3/archive_entry.3
 man/man3/archive_read.3
 man/man3/archive_read_disk.3

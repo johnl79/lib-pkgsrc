@@ -18,6 +18,7 @@ PKG_INSTALLATION_TYPES=	overwrite pkgviews
 BUILD_DEFS+=	IPV6_READY
 
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		bin lib
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--with-ssl=${BUILDLINK_PREFIX.openssl}
 CONFIGURE_ARGS+=	--with-ca-path=${SSLCERTS}
