@@ -42,13 +42,23 @@ BEGIN {
 }
 
 PLIST_USE_MULTIARCH && (/[$][{](BIN|LIB)ARCHSUFFIX[}]/) {
+	isalink = 0
 	for (abi in abis) {
 		binval = ENVIRON["BINARCHSUFFIX_" abis[abi]]
 		libval = ENVIRON["LIBARCHSUFFIX_" abis[abi]]
 		line = $0
-		gsub(/[$][{]BINARCHSUFFIX[}]/, binval, line)
+		m = gsub(/[$][{]BINARCHSUFFIX[}]/, binval, line)
+		if (m > 0) {
+			isalink = 1
+		}
 		gsub(/[$][{]LIBARCHSUFFIX[}]/, libval, line)
 		print_entry(line)
+	}
+	# XXX: Limit to SunOS only
+	if (isalink) {
+		bin = $0
+		gsub(/[$][{]BINARCHSUFFIX[}]/, "", bin)
+		print_entry("@link lib/isaexec " bin)
 	}
 	next
 }

@@ -101,6 +101,9 @@ WRKSRC?=		${WRKDIR}/${DISTNAME}
 # Turn on multi-architecture support.
 .if defined(MULTIARCH) && !empty(MULTIARCH:M[Yy][Ee][Ss]) && defined(USE_MULTIARCH)
 _MULTIARCH=		YES
+.  if ${OPSYS} == "SunOS" && !empty(USE_MULTIARCH:Mbin)
+DEPENDS+=		isaexec-[0-9]*:../../pkgtools/isaexec
+.  endif
 .endif
 
 # Override for SU_CMD user check
