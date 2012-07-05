@@ -37,8 +37,13 @@
 int
 main(int argc, char **argv, char **envp)
 {
+	const char *abi;
 	const char *execname;
 	const char *fname;
+	const char *isadir;
+	char *pathname;
+	char *str;
+	size_t len;
 
 #if !defined(TEXT_DOMAIN)		/* Should be defined by cc -D */
 #define	TEXT_DOMAIN	"SYS_TEST"	/* Use this only if it wasn't */
@@ -57,21 +62,55 @@ main(int argc, char **argv, char **envp)
 	}
 
 	/*
-	 * Get the base name of the executable.
+	 * Allocate storage for execname + longest possible ABI subdir
 	 */
-	fname = strrchr(execname, '/');
-	fname = (fname != NULL) ? (fname+1) : execname;
+	len = strlen(execname) + strlen("amd64/");
+	if ((pathname = malloc(len)) == NULL)
+		goto out;
 
+	/*
+	 * Get the dir and base name of the executable.
+	 */
+	(void) strcpy(pathname, execname);
+	if ((str = strrchr(pathname, '/')) != NULL) {
+		*++str = '\0';
+		fname = execname + (str - pathname);
+	} else {
+		fname = execname;
+		*pathname = '\0';
+	}
+	len = strlen(pathname);
+
+	/*
+	 * If ABI is set, try to find an appropriate executable, else fall
+	 * back to isaexec(3C).
+	 */
+	if ((abi = getenv("ABI")) != NULL) {
+		if ((strcmp(abi, "32") == 0 || strcmp(abi, "i86") == 0)) {
+			isadir = "i86/";
+		} else if ((strcmp(abi, "64") == 0 ||strcmp(abi, "amd64") == 0)) {
+			isadir = "amd64/";
+		}
+		if (isadir) {
+			(void) strcpy(pathname + len, isadir);
+			(void) strcat(pathname + len, fname);
+			if (access(pathname, X_OK) == 0)
+				(void) execve(pathname, argv, envp);
+			free(pathname);
+			goto out;
+		}
+	}
 	if (isaexec(execname, argv, envp) == -1) {
 		if (errno == ENOENT) {
 			(void) fprintf(stderr,
 					gettext("%s: cannot find/execute \"%s\""
 						" in ISA subdirectories\n"),
 					argv[0], fname);
+			free(pathname);
 			return (1);
 		}
 	}
-
+out:
 	(void) fprintf(stderr,
 			gettext("%s: isaexec(\"%s\") failed\n"),
 			argv[0], fname);

@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	isaexec-1.0
+DISTNAME=	isaexec-1.1
 CATEGORIES=	pkgtools
 MASTER_SITES=	# empty
 DISTFILES=	# empty
