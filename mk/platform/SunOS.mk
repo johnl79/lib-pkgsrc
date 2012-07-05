@@ -82,14 +82,8 @@ _OPSYS_CAN_CHECK_SHLIBS=	no # can't use readelf in check/bsd.check-vars.mk
 # FIXME: Adjust to work on this system and enable the lines below.
 #_OPSYS_MAX_CMDLEN_CMD=	/sbin/sysctl -n kern.argmax
 
-# Multi-architecture build support.  Order is important!  Installation is done
-# in order, so put your main ABI last.
-.if defined(MULTIARCH) && !empty(MULTIARCH:M[Yy][Ee][Ss])
-MULTIARCH_ABIS?=	64 32
-BINARCHSUFFIX.32?=	/i86
-BINARCHSUFFIX.64?=	/amd64
-LIBARCHSUFFIX.32?=	
-LIBARCHSUFFIX.64?=	/amd64
-BINARCHSUFFIX?=		${BINARCHSUFFIX.${ABI}}
-LIBARCHSUFFIX?=		${LIBARCHSUFFIX.${ABI}}
-.endif
+MULTIARCH_ABIS=		32 64
+BINARCHSUFFIX.32=	/i86
+BINARCHSUFFIX.64=	/amd64
+LIBARCHSUFFIX.32=
+LIBARCHSUFFIX.64=	/amd64

@@ -101,6 +101,8 @@ WRKSRC?=		${WRKDIR}/${DISTNAME}
 # Turn on multi-architecture support.
 .if defined(MULTIARCH) && !empty(MULTIARCH:M[Yy][Ee][Ss]) && defined(USE_MULTIARCH)
 _MULTIARCH=		YES
+BINARCHSUFFIX=		${BINARCHSUFFIX.${ABI}}
+LIBARCHSUFFIX=		${LIBARCHSUFFIX.${ABI}}
 .  if ${OPSYS} == "SunOS" && !empty(USE_MULTIARCH:Mbin)
 DEPENDS+=		isaexec-[0-9]*:../../pkgtools/isaexec
 .  endif
@@ -162,6 +164,7 @@ CPPFLAGS+=	${CPP_PRECOMP_FLAGS}
 # To sanitise environment set PKGSRC_SETENV=${SETENV} -i
 PKGSRC_SETENV?=	${SETENV}
 
+ALL_ENV+=	BINARCHSUFFIX=${BINARCHSUFFIX:Q}
 ALL_ENV+=	CC=${CC:Q}
 ALL_ENV+=	CFLAGS=${CFLAGS:M*:Q}
 ALL_ENV+=	CPPFLAGS=${CPPFLAGS:M*:Q}
