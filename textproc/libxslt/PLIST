@@ -1,6 +1,6 @@
 @comment $NetBSD: PLIST,v 1.40 2010/04/13 16:14:03 drochner Exp $
-bin/xslt-config
-bin/xsltproc
+bin${BINARCHSUFFIX}/xslt-config
+bin${BINARCHSUFFIX}/xsltproc
 include/libexslt/exslt.h
 include/libexslt/exsltconfig.h
 include/libexslt/exsltexports.h
@@ -25,11 +25,11 @@ include/libxslt/xsltconfig.h
 include/libxslt/xsltexports.h
 include/libxslt/xsltlocale.h
 include/libxslt/xsltutils.h
-lib/libexslt.la
-lib/libxslt.la
-lib/pkgconfig/libexslt.pc
-lib/pkgconfig/libxslt.pc
-lib/xsltConf.sh
+lib${LIBARCHSUFFIX}/libexslt.la
+lib${LIBARCHSUFFIX}/libxslt.la
+lib${LIBARCHSUFFIX}/pkgconfig/libexslt.pc
+lib${LIBARCHSUFFIX}/pkgconfig/libxslt.pc
+lib${LIBARCHSUFFIX}/xsltConf.sh
 man/man1/xsltproc.1
 man/man3/libexslt.3
 man/man3/libxslt.3
@@ -124,4 +124,4 @@ share/doc/libxslt/tutorial2/libxslt_pipes.xml
 share/doc/libxslt/xslt.html
 share/doc/libxslt/xsltproc.html
 share/doc/libxslt/xsltproc2.html
-@pkgdir lib/libxslt-plugins
+@pkgdir lib${LIBARCHSUFFIX}/libxslt-plugins
