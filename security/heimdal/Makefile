@@ -18,7 +18,9 @@ CONFLICTS+=	kth-krb4-[0-9]*
 
 MAKE_JOBS_SAFE=		no
 
+USE_LANGUAGES=		c99
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		bin lib
 USE_TOOLS+=		bison flex
 PKGCONFIG_OVERRIDE+=	tools/heimdal-gssapi.pc.in
 MAKE_ENV+=		INSTALL_CATPAGES=no
@@ -74,8 +76,13 @@ INFO_FILES=		yes
 
 # Dynamically determine the "replacement" headers for bits needed by
 # Heimdal but are missing in the base system and add them to the PLIST.
+.if defined(MULTIARCH)
+ROKENDIR=	${WRKSRC}-${MULTIARCH_ABIS:C/ .*//W}/lib/roken
+.else
+ROKENDIR=	${WRKSRC}/lib/roken
+.endif
 GENERATE_PLIST+=	\
-	( cd ${WRKSRC}/lib/roken && ${BUILD_MAKE_CMD} print-xheaders |	\
+	( cd ${ROKENDIR} && ${BUILD_MAKE_CMD} print-xheaders |	\
 	  ${XARGS} -n 1 | ${SED} -e "s,^,include/krb5/roken/," );
 
 TEST_TARGET=		check
