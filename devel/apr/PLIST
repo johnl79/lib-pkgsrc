@@ -1,5 +1,5 @@
 @comment $NetBSD: PLIST,v 1.9 2009/06/14 17:48:33 joerg Exp $
-bin/apr-1-config
+bin${BINARCHSUFFIX}/apr-1-config
 include/apr-1/apr.h
 include/apr-1/apr_allocator.h
 include/apr-1/apr_atomic.h
@@ -36,9 +36,9 @@ include/apr-1/apr_time.h
 include/apr-1/apr_user.h
 include/apr-1/apr_version.h
 include/apr-1/apr_want.h
-lib/apr.exp
-lib/libapr-1.la
-lib/pkgconfig/apr-1.pc
+lib${LIBARCHSUFFIX}/apr.exp
+lib${LIBARCHSUFFIX}/libapr-1.la
+lib${LIBARCHSUFFIX}/pkgconfig/apr-1.pc
 libexec/apr/apr_rules.mk
 libexec/apr/libtool
 libexec/apr/make_exports.awk
