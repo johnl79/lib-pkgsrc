@@ -355,10 +355,10 @@ post-install:
 # the DESTDIR in between each ABI install, for example to move ABI
 # specific headers to their own sub-directory.
 .PHONY: ${tgt}-multiarch-hook
-.  if !target(${tgt}-multiarch-hook)
+.    if !target(${tgt}-multiarch-hook)
 ${tgt}-multiarch-hook:
-       @${DO_NADA}
-.  endif
+	@${DO_NADA}
+.    endif
 .PHONY: ${tgt}-multi
 ${tgt}-multi:
 .    for _abi_ in ${MULTIARCH_ABIS}
