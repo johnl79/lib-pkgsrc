@@ -14,6 +14,7 @@ LICENSE=	apache-2.0
 PKG_INSTALLATION_TYPES=	overwrite pkgviews
 
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		bin lib
 USE_TOOLS+=		pkg-config
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--with-apr=${BUILDLINK_PREFIX.apr}/bin/apr-1-config
@@ -23,6 +24,7 @@ CONFIGURE_ARGS+=	--without-odbc
 CONFIGURE_ARGS+=	--without-sqlite2
 PKGCONFIG_OVERRIDE+=	apr-util.pc.in
 
+MAKE_ENV+=	BINARCHSUFFIX=${BINARCHSUFFIX}
 MAKE_ENV+=	WRAPPER_DIR=${WRAPPER_DIR}
 
 .include "../../mk/bsd.prefs.mk"
