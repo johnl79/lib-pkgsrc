@@ -1,5 +1,5 @@
 @comment $NetBSD: PLIST,v 1.20 2011/12/15 15:19:35 drochner Exp $
-bin/neon-config
+bin${BINARCHSUFFIX}/neon-config
 include/neon/ne_207.h
 include/neon/ne_acl.h
 include/neon/ne_acl3744.h
@@ -24,8 +24,8 @@ include/neon/ne_uri.h
 include/neon/ne_utils.h
 include/neon/ne_xml.h
 include/neon/ne_xmlreq.h
-lib/libneon.la
-lib/pkgconfig/neon.pc
+lib${LIBARCHSUFFIX}/libneon.la
+lib${LIBARCHSUFFIX}/pkgconfig/neon.pc
 man/man1/neon-config.1
 man/man3/ne_add_request_header.3
 man/man3/ne_addr_destroy.3
