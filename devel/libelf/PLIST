@@ -4,5 +4,5 @@ include/libelf/gelf.h
 include/libelf/libelf.h
 include/libelf/nlist.h
 include/libelf/sys_elf.h
-lib/libelf.la
-lib/pkgconfig/libelf.pc
+lib${LIBARCHSUFFIX}/libelf.la
+lib${LIBARCHSUFFIX}/pkgconfig/libelf.pc
