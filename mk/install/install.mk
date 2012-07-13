@@ -351,10 +351,19 @@ post-install:
 
 .if defined(_MULTIARCH)
 .  for tgt in install-makedirs pre-install do-install post-install
+# This is a bit ugly, but we need a hook here so that we can modify
+# the DESTDIR in between each ABI install, for example to move ABI
+# specific headers to their own sub-directory.
+.PHONY: ${tgt}-multiarch-hook
+.  if !target(${tgt}-multiarch-hook)
+${tgt}-multiarch-hook:
+       @${DO_NADA}
+.  endif
 .PHONY: ${tgt}-multi
 ${tgt}-multi:
 .    for _abi_ in ${MULTIARCH_ABIS}
 	@${MAKE} ${MAKE_FLAGS} ABI=${_abi_} WRKSRC=${WRKSRC}-${_abi_} ${tgt}
+	@${MAKE} ${MAKE_FLAGS} ABI=${_abi_} WRKSRC=${WRKSRC}-${_abi_} ${tgt}-multi-arch
 .    endfor
 .  endfor
 .endif

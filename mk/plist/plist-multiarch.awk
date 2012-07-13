@@ -29,10 +29,10 @@
 # SUCH DAMAGE.
 
 #
-# Convert ${{BIN,LIB}ARCHSUFFIX} into lines for each supported ABI.
+# Convert ${{BIN,INC,LIB}ARCHSUFFIX} into lines for each supported ABI.
 #
 # Requires that for each var in MULTIARCH_ABIS there is a corresponding
-# {BIN,LIB}ARCHSUFFIX_${var} environment variable set pointing to the
+# {BIN,INC,LIB}ARCHSUFFIX_${var} environment variable set pointing to the
 # appropriate directory.
 #
 BEGIN {
@@ -41,16 +41,18 @@ BEGIN {
 	split(PLIST_MULTIARCH_ABIS, abis, " ")
 }
 
-PLIST_USE_MULTIARCH && (/[$][{](BIN|LIB)ARCHSUFFIX[}]/) {
+PLIST_USE_MULTIARCH && (/[$][{](BIN|INC|LIB)ARCHSUFFIX[}]/) {
 	isalink = 0
 	for (abi in abis) {
 		binval = ENVIRON["BINARCHSUFFIX_" abis[abi]]
+		incval = ENVIRON["INCARCHSUFFIX_" abis[abi]]
 		libval = ENVIRON["LIBARCHSUFFIX_" abis[abi]]
 		line = $0
 		m = gsub(/[$][{]BINARCHSUFFIX[}]/, binval, line)
 		if (m > 0) {
 			isalink = 1
 		}
+		gsub(/[$][{]INCARCHSUFFIX[}]/, incval, line)
 		gsub(/[$][{]LIBARCHSUFFIX[}]/, libval, line)
 		print_entry(line)
 	}
@@ -60,9 +62,13 @@ PLIST_USE_MULTIARCH && (/[$][{](BIN|LIB)ARCHSUFFIX[}]/) {
 		gsub(/[$][{]BINARCHSUFFIX[}]/, "", bin)
 		print_entry("@link lib/isaexec " bin)
 	}
+	if (/[$][{]INCARCHSUFFIX[}]/) {
+		gsub(/[$][{]INCARCHSUFFIX[}]/, "")
+		print_entry($0)
+	}
 	next
 }
 
-/[$][{](BIN|LIB)LIBARCHSUFFIX[}]/ {
-	gsub(/[$][{](BIN|LIB)ARCHSUFFIX[}]/, "")
+/[$][{](BIN|INC|LIB)LIBARCHSUFFIX[}]/ {
+	gsub(/[$][{](BIN|INC|LIB)ARCHSUFFIX[}]/, "")
 }

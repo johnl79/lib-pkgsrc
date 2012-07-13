@@ -102,6 +102,7 @@ WRKSRC?=		${WRKDIR}/${DISTNAME}
 .if defined(MULTIARCH) && !empty(MULTIARCH:M[Yy][Ee][Ss]) && defined(USE_MULTIARCH)
 _MULTIARCH=		YES
 BINARCHSUFFIX=		${BINARCHSUFFIX.${ABI}}
+INCARCHSUFFIX=		${INCARCHSUFFIX.${ABI}}
 LIBARCHSUFFIX=		${LIBARCHSUFFIX.${ABI}}
 .  if ${OPSYS} == "SunOS" && !empty(USE_MULTIARCH:Mbin)
 DEPENDS+=		isaexec-[0-9]*:../../pkgtools/isaexec
@@ -247,6 +248,7 @@ LIBABISUFFIX?=
 
 # Multi-architecture builds
 BINARCHSUFFIX?=
+INCARCHSUFFIX?=
 LIBARCHSUFFIX?=
 
 TOUCH_FLAGS?=		-f
