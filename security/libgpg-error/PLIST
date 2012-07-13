@@ -1,8 +1,8 @@
 @comment $NetBSD: PLIST,v 1.11 2012/07/17 16:01:10 marino Exp $
-bin/gpg-error
-bin/gpg-error-config
+bin${BINARCHSUFFIX}/gpg-error
+bin${BINARCHSUFFIX}/gpg-error-config
 include/gpg-error.h
-lib/libgpg-error.la
+lib${LIBARCHSUFFIX}/libgpg-error.la
 share/aclocal/gpg-error.m4
 share/common-lisp/source/gpg-error/gpg-error-codes.lisp
 share/common-lisp/source/gpg-error/gpg-error-package.lisp
