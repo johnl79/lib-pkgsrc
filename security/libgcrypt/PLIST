@@ -1,9 +1,9 @@
 @comment $NetBSD: PLIST,v 1.10 2008/10/14 11:33:13 adam Exp $
-bin/dumpsexp
-bin/hmac256
-bin/libgcrypt-config
+bin${BINARCHSUFFIX}/dumpsexp
+bin${BINARCHSUFFIX}/hmac256
+bin${BINARCHSUFFIX}/libgcrypt-config
 include/gcrypt-module.h
 include/gcrypt.h
 info/gcrypt.info
-lib/libgcrypt.la
+lib${LIBARCHSUFFIX}/libgcrypt.la
 share/aclocal/libgcrypt.m4
