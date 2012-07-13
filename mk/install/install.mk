@@ -363,7 +363,7 @@ ${tgt}-multiarch-hook:
 ${tgt}-multi:
 .    for _abi_ in ${MULTIARCH_ABIS}
 	@${MAKE} ${MAKE_FLAGS} ABI=${_abi_} WRKSRC=${WRKSRC}-${_abi_} ${tgt}
-	@${MAKE} ${MAKE_FLAGS} ABI=${_abi_} WRKSRC=${WRKSRC}-${_abi_} ${tgt}-multi-arch
+	@${MAKE} ${MAKE_FLAGS} ABI=${_abi_} WRKSRC=${WRKSRC}-${_abi_} ${tgt}-multiarch-hook
 .    endfor
 .  endfor
 .endif
