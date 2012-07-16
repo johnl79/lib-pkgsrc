@@ -15,10 +15,10 @@ include/FLAC/metadata.h
 include/FLAC/ordinals.h
 include/FLAC/stream_decoder.h
 include/FLAC/stream_encoder.h
-lib${LIBARCHSUFFIX}/libFLAC++.la
-lib${LIBARCHSUFFIX}/libFLAC.la
-lib${LIBARCHSUFFIX}/pkgconfig/flac++.pc
-lib${LIBARCHSUFFIX}/pkgconfig/flac.pc
+lib/libFLAC++.la
+lib/libFLAC.la
+lib/pkgconfig/flac++.pc
+lib/pkgconfig/flac.pc
 man/man1/flac.1
 man/man1/metaflac.1
 share/aclocal/libFLAC++.m4

@@ -2,6 +2,6 @@
 bin/rdiff
 include/librsync-config.h
 include/librsync.h
-lib${LIBARCHSUFFIX}/librsync.la
+lib/librsync.la
 man/man1/rdiff.1
 man/man3/librsync.3

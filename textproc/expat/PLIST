@@ -2,8 +2,8 @@
 bin/xmlwf
 include/expat.h
 include/expat_external.h
-lib${LIBARCHSUFFIX}/libexpat.la
-lib${LIBARCHSUFFIX}/pkgconfig/expat.pc
+lib/libexpat.la
+lib/pkgconfig/expat.pc
 man/man1/xmlwf.1
 share/doc/html/expat/reference.html
 share/doc/html/expat/style.css

@@ -1,7 +1,5 @@
 @comment $NetBSD: PLIST,v 1.43 2012/09/15 10:23:38 adam Exp $
-bin${BINARCHSUFFIX}/xml2-config
-bin${BINARCHSUFFIX}/xmlcatalog
-bin${BINARCHSUFFIX}/xmllint
+@comment $NetBSD: PLIST,v 1.42 2012/06/03 22:18:33 wiz Exp $
 include/libxml2/libxml/DOCBparser.h
 include/libxml2/libxml/HTMLparser.h
 include/libxml2/libxml/HTMLtree.h
@@ -49,9 +47,9 @@ include/libxml2/libxml/xmlwriter.h
 include/libxml2/libxml/xpath.h
 include/libxml2/libxml/xpathInternals.h
 include/libxml2/libxml/xpointer.h
-lib${LIBARCHSUFFIX}/libxml2.la
-lib${LIBARCHSUFFIX}/pkgconfig/libxml-2.0.pc
-lib${LIBARCHSUFFIX}/xml2Conf.sh
+lib/libxml2.la
+lib/pkgconfig/libxml-2.0.pc
+lib/xml2Conf.sh
 man/man1/xml2-config.1
 man/man1/xmlcatalog.1
 man/man1/xmllint.1

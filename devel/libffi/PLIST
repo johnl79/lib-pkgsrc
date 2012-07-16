@@ -2,8 +2,8 @@
 include/ffi.h
 include/ffitarget.h
 info/libffi.info
-lib${LIBARCHSUFFIX}/libffi.la
-lib${LIBARCHSUFFIX}/pkgconfig/libffi.pc
+lib/libffi.la
+lib/pkgconfig/libffi.pc
 man/man3/ffi.3
 man/man3/ffi_call.3
 man/man3/ffi_prep_cif.3

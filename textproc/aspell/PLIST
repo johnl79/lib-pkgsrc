@@ -1,13 +1,13 @@
 @comment $NetBSD: PLIST,v 1.16 2011/07/12 14:06:02 wiz Exp $
-bin${BINARCHSUFFIX}/aspell
-bin${BINARCHSUFFIX}/aspell-import
-bin${BINARCHSUFFIX}/precat
-bin${BINARCHSUFFIX}/preunzip
-bin${BINARCHSUFFIX}/prezip
-bin${BINARCHSUFFIX}/prezip-bin
-bin${BINARCHSUFFIX}/pspell-config
-bin${BINARCHSUFFIX}/run-with-aspell
-bin${BINARCHSUFFIX}/word-list-compress
+bin/aspell
+bin/aspell-import
+bin/precat
+bin/preunzip
+bin/prezip
+bin/prezip-bin
+bin/pspell-config
+bin/run-with-aspell
+bin/word-list-compress
 include/aspell.h
 include/pspell/pspell.h
 info/aspell-dev.info

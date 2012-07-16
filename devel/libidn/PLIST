@@ -9,8 +9,8 @@ include/stringprep.h
 include/tld.h
 info/libidn-components.png
 info/libidn.info
-lib${LIBARCHSUFFIX}/libidn.la
-lib${LIBARCHSUFFIX}/pkgconfig/libidn.pc
+lib/libidn.la
+lib/pkgconfig/libidn.pc
 man/man1/idn.1
 man/man3/idn_free.3
 man/man3/idna_strerror.3

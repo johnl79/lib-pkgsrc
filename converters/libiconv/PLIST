@@ -3,9 +3,9 @@ bin/iconv
 include/iconv.h
 include/libcharset.h
 include/localcharset.h
-lib${LIBARCHSUFFIX}/libcharset.la
-lib${LIBARCHSUFFIX}/libiconv.la
-${PLIST.preload}lib${LIBARCHSUFFIX}/preloadable_libiconv.so
+lib/libcharset.la
+lib/libiconv.la
+${PLIST.preload}lib/preloadable_libiconv.so
 man/man1/iconv.1
 man/man3/iconv.3
 man/man3/iconv_close.3

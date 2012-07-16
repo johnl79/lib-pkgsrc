@@ -37,8 +37,8 @@ include/lzma/lzma.h
 include/lzma/stream_flags.h
 include/lzma/version.h
 include/lzma/vli.h
-lib${LIBARCHSUFFIX}/liblzma.la
-lib${LIBARCHSUFFIX}/pkgconfig/liblzma.pc
+lib/liblzma.la
+lib/pkgconfig/liblzma.pc
 man/man1/lzcat.1
 man/man1/lzcmp.1
 man/man1/lzdiff.1

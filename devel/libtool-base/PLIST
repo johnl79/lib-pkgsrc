@@ -1,6 +1,6 @@
 @comment $NetBSD: PLIST,v 1.12 2009/12/15 17:35:37 joerg Exp $
-bin${BINARCHSUFFIX}/libtool
-bin${BINARCHSUFFIX}/libtoolize
+bin/libtool
+bin/libtoolize
 ${PLIST.shlibtool}bin/shlibtool
 share/aclocal/argz.m4
 share/aclocal/libtool.m4
