@@ -36,22 +36,57 @@
 # appropriate directory.
 #
 BEGIN {
+	PLIST_MULTIARCH_ENABLED = ENVIRON["_MULTIARCH"] ? 1 : 0
+	PLIST_USE_MULTIARCH = ENVIRON["USE_MULTIARCH"] ? ENVIRON["USE_MULTIARCH"] : ""
 	PLIST_MULTIARCH_ABIS = ENVIRON["MULTIARCH_ABIS"]
-	PLIST_USE_MULTIARCH = ENVIRON["_MULTIARCH"] ? ENVIRON["_MULTIARCH"] : ""
 	split(PLIST_MULTIARCH_ABIS, abis, " ")
+	PLIST_MULTIARCH_DIRS_bin = ENVIRON["MULTIARCH_DIRS_bin"] ? ENVIRON["MULTIARCH_DIRS_bin"] : ""
+	PLIST_MULTIARCH_DIRS_lib = ENVIRON["MULTIARCH_DIRS_lib"] ? ENVIRON["MULTIARCH_DIRS_lib"] : ""
+	split(PLIST_MULTIARCH_DIRS_bin, bindirs, " ")
+	split(PLIST_MULTIARCH_DIRS_lib, libdirs, " ")
 }
 
-PLIST_USE_MULTIARCH && (/[$][{](BIN|INC|LIB)ARCHSUFFIX[}]/) {
+function replace_arch_dirs(type, dirs, suffixvar)
+{
+	matched = 0
+	for (dir in dirs) {
+		dirmatch = "^" dirs[dir]
+		if ($0 ~ dirmatch) {
+			for (abi in abis) {
+				line = $0
+				matched += gsub(dirmatch, dirs[dir] ENVIRON[suffixvar "_" abis[abi]], line)
+				print_entry(line)
+			}
+		}
+	}
+	# XXX: Limit to SunOS only
+	if (type == "bin" && matched) {
+		print_entry("@link lib/isaexec " $0)
+	}
+	return matched
+}
+
+PLIST_MULTIARCH_ENABLED && PLIST_USE_MULTIARCH ~ /bin/ {
+	if (replace_arch_dirs("bin", bindirs, "BINARCHSUFFIX") > 0) {
+		next
+	}
+}
+
+PLIST_MULTIARCH_ENABLED && PLIST_USE_MULTIARCH ~ /lib/ {
+	if (replace_arch_dirs("lib", libdirs, "LIBARCHSUFFIX") > 0) {
+		next
+	}
+}
+
+# Support manual PLIST entries.
+PLIST_MULTIARCH_ENABLED && (/[$][{](BIN|INC|LIB)ARCHSUFFIX[}]/) {
 	isalink = 0
 	for (abi in abis) {
 		binval = ENVIRON["BINARCHSUFFIX_" abis[abi]]
 		incval = ENVIRON["INCARCHSUFFIX_" abis[abi]]
 		libval = ENVIRON["LIBARCHSUFFIX_" abis[abi]]
 		line = $0
-		m = gsub(/[$][{]BINARCHSUFFIX[}]/, binval, line)
-		if (m > 0) {
-			isalink = 1
-		}
+		isalink += gsub(/[$][{]BINARCHSUFFIX[}]/, binval, line)
 		gsub(/[$][{]INCARCHSUFFIX[}]/, incval, line)
 		gsub(/[$][{]LIBARCHSUFFIX[}]/, libval, line)
 		print_entry(line)
