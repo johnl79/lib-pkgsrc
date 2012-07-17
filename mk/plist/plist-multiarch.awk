@@ -50,11 +50,11 @@ function replace_arch_dirs(type, dirs, suffixvar)
 {
 	matched = 0
 	for (dir in dirs) {
-		dirmatch = "^" dirs[dir]
+		dirmatch = "^" dirs[dir] "/"
 		if ($0 ~ dirmatch) {
 			for (abi in abis) {
 				line = $0
-				matched += gsub(dirmatch, dirs[dir] ENVIRON[suffixvar "_" abis[abi]], line)
+				matched += gsub(dirmatch, dirs[dir] ENVIRON[suffixvar "_" abis[abi]] "/", line)
 				print_entry(line)
 			}
 		}
