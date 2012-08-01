@@ -46,7 +46,7 @@ PATCHDIR=	${.CURDIR}/../libtool/patches
 
 AUTOMAKE_OVERRIDE=	NO
 
-USE_MULTIARCH=	bin
+USE_MULTIARCH=	bin lib
 
 .include "../../mk/bsd.prefs.mk"
 
