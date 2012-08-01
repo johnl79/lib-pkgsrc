@@ -107,8 +107,8 @@ LIBARCHSUFFIX=		${LIBARCHSUFFIX.${ABI}}
 .  if ${OPSYS} == "SunOS" && !empty(USE_MULTIARCH:Mbin)
 DEPENDS+=		isaexec-[0-9]*:../../pkgtools/isaexec
 .  endif
-MULTIARCH_DIRS.bin=	bin sbin
-MULTIARCH_DIRS.lib=	lib
+MULTIARCH_DIRS.bin?=	bin sbin
+MULTIARCH_DIRS.lib?=	lib
 .endif
 
 # Override for SU_CMD user check
