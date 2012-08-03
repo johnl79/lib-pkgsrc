@@ -17,6 +17,7 @@ PKG_INSTALLATION_TYPES=	overwrite pkgviews
 INSTALLATION_DIRS=	bin
 
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		bin lib
 USE_TOOLS+=		bison gm4 lex
 GNU_CONFIGURE=		yes
 PLIST_VARS+=		SunOS std
