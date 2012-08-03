@@ -8,7 +8,6 @@ SVR4_PKGNAME=	gttli
 COMMENT=	Internationalized Message Handling Library (libintl)
 
 USE_LANGUAGES=		c
-USE_MULTIARCH=		lib
 CONFIGURE_ARGS+=	--with-included-gettext
 CONFIGURE_ARGS+=	--disable-csharp
 CONFIGURE_ENV+=		PKGLOCALEDIR=${PKGLOCALEDIR}
