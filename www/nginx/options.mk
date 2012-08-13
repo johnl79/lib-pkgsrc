@@ -112,8 +112,7 @@ CONFIGURE_ARGS+=	--with-http_stub_status_module
 .endif
 
 .if !empty(PKG_OPTIONS:Mpassenger)
-PKGNAME=		${DISTNAME}
-FILEBASE=		${PKGBASE}+passenger
+PKGNAME=		${DISTNAME:S/nginx/nginx-passenger/}
 
 DEPENDS+=		${RUBY_PKGPREFIX}-passenger-[0-9]*:../../wip/ruby-passenger
 
