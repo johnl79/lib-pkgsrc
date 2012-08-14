@@ -55,6 +55,8 @@ MAKE_ENV+=		PTHREAD_STUBLIB=${PTHREAD_STUBLIB:Q}
 MAKE_ENV+=	CROSS_COMPILING=yes
 .endif
 
+MAKE_ENV+=	LIBARCHSUFFIX=${LIBARCHSUFFIX}
+
 RM_PATCH_BACKUP_DIRS=	docs src/mesa src/glut/glx \
 			progs/demos progs/xdemos progs/glsl
 post-extract:
