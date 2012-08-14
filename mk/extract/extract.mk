@@ -244,7 +244,9 @@ post-extract:
 do-extract-multi:
 .  for _abi_ in ${MULTIARCH_ABIS}
 	@${MAKE} ${MAKE_FLAGS} do-extract
-	@mv ${WRKSRC} ${WRKSRC}-${_abi_}
+	@if [ -d ${WRKSRC} ]; then \
+		${MV} ${WRKSRC} ${WRKSRC}-${_abi_}; \
+	fi
 .  endfor
 
 .  for tgt in pre-extract post-extract
