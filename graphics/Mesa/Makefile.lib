@@ -31,7 +31,6 @@ COPTS+= 	 	-prefer-pic 	# Make sure to build PIC libraries.
 MAKE_ENV+=		MAKE=${GMAKE:Q}
 MAKE_ENV+=		COPTS=${COPTS:M*:Q}
 MAKE_ENV+=		MKDEP=${TRUE:Q}
-MAKE_ENV+=		LIBARCHSUFFIX=${LIBARCHSUFFIX:Q}
 
 #.if ${X11_TYPE} == "modular"
 #.  if defined(PKG_BUILD_OPTIONS.libX11) && \

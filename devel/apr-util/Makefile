@@ -24,7 +24,6 @@ CONFIGURE_ARGS+=	--without-odbc
 CONFIGURE_ARGS+=	--without-sqlite2
 PKGCONFIG_OVERRIDE+=	apr-util.pc.in
 
-MAKE_ENV+=	BINARCHSUFFIX=${BINARCHSUFFIX}
 MAKE_ENV+=	WRAPPER_DIR=${WRAPPER_DIR}
 
 .include "../../mk/bsd.prefs.mk"
