@@ -100,6 +100,13 @@ CONFIGURE_ARGS+=	--with-gnu-as --with-as=${PREFIX}/bin/gas
 .  endif
 .endif
 
+FILES_SUBST+=		MACHINE_ARCH=${MACHINE_ARCH}
+
+SUBST_CLASSES+=		paths
+SUBST_STAGE.paths=	pre-configure
+SUBST_FILES.paths=	gcc/config/sol2-bi.h  gcc/config/sol2.h
+SUBST_SED.paths=	-e 's,@PREFIX@,${PREFIX},g'
+
 pre-configure:
 	${RUN} cd ${WRKSRC} && ${MKDIR} ${OBJDIR}
 
