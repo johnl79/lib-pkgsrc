@@ -23,7 +23,7 @@ EXTRACT_ONLY=		${DEFAULT_DISTFILES}
 
 NOT_FOR_PLATFORM=	Interix-*-*
 
-USE_TOOLS+=		gmake makeinfo sed:run
+USE_TOOLS+=		gmake sed:run
 
 GNU_CONFIGURE=		yes
 ## Build outside ${WRKSRC}
