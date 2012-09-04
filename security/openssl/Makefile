@@ -51,6 +51,7 @@ CONFIGURE_SCRIPT=	./config
 CONFIGURE_ARGS+=	--prefix=${PREFIX:Q}
 CONFIGURE_ARGS+=	--install_prefix=${DESTDIR}
 CONFIGURE_ARGS+=	--openssldir=${PKG_SYSCONFDIR:Q}
+CONFIGURE_ARGS+=	--libdir=lib${LIBARCHSUFFIX:Q}
 CONFIGURE_ARGS+=	shared no-fips
 
 .if ${OPSYS} == "SunOS"
