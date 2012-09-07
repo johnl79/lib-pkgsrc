@@ -47,7 +47,7 @@
 # first when searching for executables.
 #
 TOOLS_DIR=	${WRKDIR}/.tools
-PREPEND_PATH+=	${TOOLS_DIR}/bin
+PREPEND_PATH+=	${TOOLS_DIR}/bin${BINARCHSUFFIX}
 
 TOOLS_SHELL?=		${SH}
 _TOOLS_WRAP_LOG=	${WRKLOG}
@@ -98,7 +98,11 @@ ${_COOKIE.tools}: real-tools
 ###
 _REAL_TOOLS_TARGETS+=	tools-message
 _REAL_TOOLS_TARGETS+=	tools-vars
+.if defined(MULTIARCH)
+_REAL_TOOLS_TARGETS+=	override-tools-multi
+.else
 _REAL_TOOLS_TARGETS+=	override-tools
+.endif
 _REAL_TOOLS_TARGETS+=	post-tools
 _REAL_TOOLS_TARGETS+=	tools-cookie
 _REAL_TOOLS_TARGETS+=	error-check
@@ -132,6 +136,14 @@ tools-cookie:
 .PHONY: override-tools
 override-tools:
 	@${DO_NADA}
+
+.if defined(MULTIARCH)
+.PHONY: override-tools-multi
+override-tools-multi:
+.  for _abi_ in ${MULTIARCH_ABIS}
+	@${MAKE} ${MAKE_FLAGS} ABI=${_abi_} WRKSRC=${WRKSRC}-${_abi_} override-tools
+.  endfor
+.endif
 
 ######################################################################
 ### post-tools (PUBLIC, override)
