@@ -10,7 +10,7 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  
  #----------------------------------------------------------------
  # Things you can change to personalize the Makefile for your own
-@@ -64,6 +65,8 @@ SCRIPT_INSTALL_DIR	= $(INSTALL_ROOT)$(TK
+@@ -64,6 +65,8 @@
  
  # Directory in which to install the include file tk.h:
  INCLUDE_INSTALL_DIR	= $(INSTALL_ROOT)$(includedir)
@@ -19,16 +19,7 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  
  # Path to the private tk header dir:
  PRIVATE_INCLUDE_DIR	= @PRIVATE_INCLUDE_DIR@
-@@ -100,7 +103,7 @@ DEMO_INSTALL_DIR	= $(INSTALL_ROOT)$(TK_L
- # The directory containing the Tcl sources and headers appropriate
- # for this version of Tk ("srcdir" will be replaced or has already
- # been replaced by the configure script):
--TCL_GENERIC_DIR		= @TCL_SRC_DIR@/generic
-+TCL_GENERIC_DIR		= $(TCL_BIN_DIR)/../include/tcl/generic
- 
- # The directory containing the platform specific Tcl sources and headers
- # appropriate for this version of Tk:
-@@ -137,7 +140,7 @@ CFLAGS_OPTIMIZE		= @CFLAGS_OPTIMIZE@
+@@ -137,7 +140,7 @@
  #CFLAGS			= $(CFLAGS_DEBUG)
  #CFLAGS			= $(CFLAGS_OPTIMIZE)
  #CFLAGS			= $(CFLAGS_DEBUG) $(CFLAGS_OPTIMIZE)
@@ -100,6 +91,7 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  	@if test -f "tk${MAJOR_VERSION}${MINOR_VERSION}.dll"; then \
  	    $(INSTALL_LIBRARY) "tk${MAJOR_VERSION}${MINOR_VERSION}.dll" "$(DLL_INSTALL_DIR)";\
  	    chmod 555 "$(DLL_INSTALL_DIR)/tk${MAJOR_VERSION}${MINOR_VERSION}.dll";\
+@@ -744,6 +759,7 @@
  	fi
  	@echo "Installing ${WISH_EXE} as $(BIN_INSTALL_DIR)/wish$(VERSION)${EXE_SUFFIX}"
  	@$(INSTALL_PROGRAM) ${WISH_EXE} "$(BIN_INSTALL_DIR)/wish$(VERSION)${EXE_SUFFIX}"
