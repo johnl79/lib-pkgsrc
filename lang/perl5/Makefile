@@ -210,7 +210,14 @@ post-build:
 		${FILESDIR}/perllink.in > ${WRKDIR}/perllink.sh
 
 INSTALLATION_DIRS=	bin ${PKGMANDIR}/man1
-PERL5_PACKLIST_DIR_cmd=	. ${WRKSRC}/config.sh;	echo $$installarchlib
+PERL5_PACKLIST_DIR_cmd=	for conf in ${WRKSRC}*/config.sh; do \
+				if [ -f $$conf ]; then \
+					. $$conf; \
+					echo $$installarchlib; \
+				else \
+					echo; \
+				fi; \
+			done
 PERL5_PACKLIST_DIR=	${PERL5_PACKLIST_DIR_cmd:sh}
 PERL5_PACKLIST=		.packlist
 PERL5_PACKLIST_DESTDIR=	no

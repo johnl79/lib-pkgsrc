@@ -33,8 +33,10 @@ PERL5_PACKLIST_DESTDIR?=	yes
 
 .if defined(PERL5_PACKLIST)
 PERL5_PACKLIST_DIR?=	${PERL5_INSTALLVENDORARCH}
-_PERL5_REAL_PACKLIST=	${PERL5_PACKLIST:S/^/${PERL5_PACKLIST_DIR}\//}
-_PERL5_PACKLIST=	${_PERL5_REAL_PACKLIST:S/^/${DESTDIR}/}
+_PERL5_REAL_PACKLIST_cmd=	for dir in ${PERL5_PACKLIST_DIR}; do echo $${dir}/${PERL5_PACKLIST}; done
+_PERL5_PACKLIST_cmd=		for pl in ${_PERL5_REAL_PACKLIST}; do echo ${DESTDIR}$${pl}; done
+_PERL5_REAL_PACKLIST=	${_PERL5_REAL_PACKLIST_cmd:sh}
+_PERL5_PACKLIST=	${_PERL5_PACKLIST_cmd:sh}
 .endif
 
 ###########################################################################
