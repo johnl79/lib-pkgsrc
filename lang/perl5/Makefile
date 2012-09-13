@@ -156,7 +156,7 @@ SUBST_CLASSES+=		rm
 SUBST_STAGE.rm=		pre-install
 SUBST_FILES.rm=		lib/Config_heavy.pl
 SUBST_MESSAGE.rm=	Do not use tools version of rm.
-SUBST_SED.rm=	-e "s!^rm_try='/.*/\\.tools/bin/rm -f!rm_try='/bin/rm -f!"
+SUBST_SED.rm=	-e "s!^rm_try='/.*/\\.tools/bin${BINARCHSUFFIX}/rm -f!rm_try='/bin/rm -f!"
 
 # Replace our perl as the interpreter
 REPLACE_PERL+=		lib/File/DosGlob.pm
