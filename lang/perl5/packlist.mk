@@ -63,6 +63,7 @@ PERL5_PLIST_COMMENT_CMD= \
 PERL5_PLIST_FILES_CMD= \
 	{ ${CAT} ${_PERL5_PACKLIST}; for f in ${_PERL5_REAL_PACKLIST}; do ${TEST} ! -f "${DESTDIR}$$f" || ${ECHO} "$$f"; done; } \
 	| ${SED} -e "s,[ 	].*,," -e "s,/\\./,/,g" -e "s,${PREFIX}/,," \
+	| ${SED} -e "/^bin/d" \
 	| ${SORT} -u
 PERL5_GENERATE_PLIST=	${PERL5_PLIST_COMMENT_CMD}; \
 			${PERL5_PLIST_FILES_CMD};

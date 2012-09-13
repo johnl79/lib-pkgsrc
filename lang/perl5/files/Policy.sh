@@ -37,6 +37,7 @@ vendorscript='@PERL5_VENDORBASE@/bin'
 # Put any compiled binaries into vendor- and site-specific locations to
 # avoid conflicts with each other.  The perllink script will handle all
 # the appropriate symlinking.
+bin='@PERL5_PREFIX@/bin@BINARCHSUFFIX@'
 sitebin='@PERL5_SITEBIN@'
 vendorbin='@PERL5_VENDORBASE@/bin'
 

@@ -12,5 +12,6 @@ MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://www.perl.org/
 LICENSE=	${PERL5_LICENSE}
 
-USE_MULTIARCH=		lib
+USE_MULTIARCH=		bin lib
+MULTIARCH_DIRS.bin=	# configured manually
 MULTIARCH_DIRS.lib=	# empty
