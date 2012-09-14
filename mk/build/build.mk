@@ -120,7 +120,11 @@ build-clean: install-clean _package-clean
 ###
 _REAL_BUILD_TARGETS+=	build-check-interactive
 _REAL_BUILD_TARGETS+=	build-message
+.if defined(_MULTIARCH)
+_REAL_BUILD_TARGETS+=	build-vars-multi
+.else
 _REAL_BUILD_TARGETS+=	build-vars
+.endif
 _REAL_BUILD_TARGETS+=	pre-build-checks-hook
 .if defined(_MULTIARCH)
 _REAL_BUILD_TARGETS+=	pre-build-multi
@@ -185,11 +189,11 @@ post-build:
 .endif
 
 .if defined(_MULTIARCH)
-.  for tgt in pre-build do-build post-build
-.PHONY: ${tgt}-multi
-${tgt}-multi:
+.  for _tgt_ in build-vars pre-build do-build post-build
+.PHONY: ${_tgt_}-multi
+${_tgt_}-multi:
 .    for _abi_ in ${MULTIARCH_ABIS}
-	@${MAKE} ${MAKE_FLAGS} ABI=${_abi_} WRKSRC=${WRKSRC}-${_abi_} ${tgt}
+	@${MAKE} ${MAKE_FLAGS} ABI=${_abi_} WRKSRC=${WRKSRC}-${_abi_} ${_tgt_}
 .    endfor
 .  endfor
 .endif

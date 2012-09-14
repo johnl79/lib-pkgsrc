@@ -97,7 +97,11 @@ ${_COOKIE.extract}: real-extract
 ###
 _REAL_EXTRACT_TARGETS+=	extract-check-interactive
 _REAL_EXTRACT_TARGETS+=	extract-message
+.if defined(_MULTIARCH)
+_REAL_EXTRACT_TARGETS+=	extract-vars-multi
+.else
 _REAL_EXTRACT_TARGETS+=	extract-vars
+.endif
 _REAL_EXTRACT_TARGETS+=	extract-dir
 .if defined(_MULTIARCH)
 _REAL_EXTRACT_TARGETS+=	pre-extract-multi
@@ -239,8 +243,7 @@ post-extract:
 .endif
 
 .if defined(_MULTIARCH)
-.PHONY: pre-extract-multi do-extract-multi post-extract-multi
-
+.PHONY: do-extract-multi
 do-extract-multi:
 .  for _abi_ in ${MULTIARCH_ABIS}
 	@${MAKE} ${MAKE_FLAGS} do-extract
@@ -249,10 +252,11 @@ do-extract-multi:
 	fi
 .  endfor
 
-.  for tgt in pre-extract post-extract
-${tgt}-multi:
+.  for _tgt_ in extract-vars pre-extract post-extract
+.PHONY: ${_tgt_}-multi
+${_tgt_}-multi:
 .    for _abi_ in ${MULTIARCH_ABIS}
-	@${MAKE} ${MAKE_FLAGS} WRKSRC=${WRKSRC}-${_abi_} ${tgt}
+	@${MAKE} ${MAKE_FLAGS} ABI=${_abi_} WRKSRC=${WRKSRC}-${_abi_} ${_tgt_}
 .    endfor
 .  endfor
 .endif

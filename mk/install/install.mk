@@ -100,7 +100,11 @@ ${_COOKIE.install}: real-install
 _REAL_INSTALL_TARGETS+=	install-check-interactive
 _REAL_INSTALL_TARGETS+=	install-check-version
 _REAL_INSTALL_TARGETS+=	install-message
+.if defined(_MULTIARCH)
+_REAL_INSTALL_TARGETS+=	stage-install-vars-multi
+.else
 _REAL_INSTALL_TARGETS+=	stage-install-vars
+.endif
 _REAL_INSTALL_TARGETS+=	unprivileged-install-hook
 _REAL_INSTALL_TARGETS+=	install-all
 _REAL_INSTALL_TARGETS+=	install-cookie
@@ -350,7 +354,7 @@ post-install:
 .endif
 
 .if defined(_MULTIARCH)
-.  for tgt in install-makedirs pre-install do-install post-install
+.  for tgt in stage-install-vars install-makedirs pre-install do-install post-install
 # This is a bit ugly, but we need a hook here so that we can modify
 # the DESTDIR in between each ABI install, for example to move ABI
 # specific headers to their own sub-directory.

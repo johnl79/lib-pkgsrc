@@ -94,12 +94,13 @@ ${_COOKIE.patch}: real-patch
 ### targets that do the actual patching work.
 ###
 _REAL_PATCH_TARGETS+=	patch-message
-_REAL_PATCH_TARGETS+=	patch-vars
 .if defined(_MULTIARCH)
+_REAL_PATCH_TARGETS+=	patch-vars-multi
 _REAL_PATCH_TARGETS+=	pre-patch-multi
 _REAL_PATCH_TARGETS+=	do-patch-multi
 _REAL_PATCH_TARGETS+=	post-patch-multi
 .else
+_REAL_PATCH_TARGETS+=	patch-vars
 _REAL_PATCH_TARGETS+=	pre-patch
 _REAL_PATCH_TARGETS+=	do-patch
 _REAL_PATCH_TARGETS+=	post-patch
@@ -163,7 +164,7 @@ post-patch:
 .endif
 
 .if defined(_MULTIARCH)
-.  for tgt in pre-patch do-patch post-patch
+.  for tgt in patch-vars pre-patch do-patch post-patch
 .PHONY: ${tgt}-multi
 ${tgt}-multi:
 .    for _abi_ in ${MULTIARCH_ABIS}

@@ -129,8 +129,8 @@ ${_COOKIE.configure}: real-configure
 #
 _REAL_CONFIGURE_TARGETS+=	configure-check-interactive
 _REAL_CONFIGURE_TARGETS+=	configure-message
-_REAL_CONFIGURE_TARGETS+=	configure-vars
 .if defined(_MULTIARCH)
+_REAL_CONFIGURE_TARGETS+=	configure-vars-multi
 _REAL_CONFIGURE_TARGETS+=	pre-configure-multi
 _REAL_CONFIGURE_TARGETS+=	do-configure-pre-hook-multi
 _REAL_CONFIGURE_TARGETS+=	pre-configure-checks-hook-multi
@@ -138,6 +138,7 @@ _REAL_CONFIGURE_TARGETS+=	do-configure-multi
 _REAL_CONFIGURE_TARGETS+=	do-configure-post-hook-multi
 _REAL_CONFIGURE_TARGETS+=	post-configure-multi
 .else
+_REAL_CONFIGURE_TARGETS+=	configure-vars
 _REAL_CONFIGURE_TARGETS+=	pre-configure
 _REAL_CONFIGURE_TARGETS+=	do-configure-pre-hook
 _REAL_CONFIGURE_TARGETS+=	pre-configure-checks-hook
@@ -283,6 +284,7 @@ post-configure:
 .endif
 
 .if defined(_MULTIARCH)
+_MULTIARCH_TARGETS+=	configure-vars
 _MULTIARCH_TARGETS+=	pre-configure
 _MULTIARCH_TARGETS+=	do-configure-pre-hook
 _MULTIARCH_TARGETS+=	pre-configure-checks-hook
