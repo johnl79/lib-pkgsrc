@@ -18,6 +18,7 @@ PRIVILEGED_STAGES+=	clean
 
 USE_LANGUAGES=		c c++
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		lib
 USE_TOOLS+=		bison pkg-config
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--disable-java
@@ -68,9 +69,9 @@ pre-build:
 
 # Remove temporary files and directories created by re-linking "libgv_lua.la".
 post-install:
-	${RM} -rf ${DESTDIR}${PREFIX}/lib/graphviz/lua/gv.so \
-	  ${DESTDIR}${PREFIX}/lib/graphviz/tcl/tcl \
-	  ${DESTDIR}${PREFIX}/lib/lua/5.1/gv.so
+	${RM} -rf ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX}/graphviz/lua/gv.so \
+	  ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX}/graphviz/tcl/tcl \
+	  ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX}/lua/5.1/gv.so
 
 .include "options.mk"
 
