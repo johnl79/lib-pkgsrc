@@ -16,6 +16,7 @@ LICENSE=	${PERL5_LICENSE}
 
 PKG_INSTALLATION_TYPES=	overwrite pkgviews
 
+USE_MULTIARCH=		lib
 USE_NCURSES=		yes
 PERL5_PACKLIST=		auto/Curses/.packlist
 
