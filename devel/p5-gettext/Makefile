@@ -15,6 +15,7 @@ LICENSE=	${PERL5_LICENSE}
 PKG_INSTALLATION_TYPES=	overwrite pkgviews
 
 USE_LANGUAGES=		c
+USE_MULTIARCH=		lib
 PERL5_PACKLIST=		auto/Locale/gettext/.packlist
 
 SUBST_CLASSES+=		intlpath
