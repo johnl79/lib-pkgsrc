@@ -14,6 +14,7 @@ COMMENT=		Perl5 wrapper module for the OpenSSL Bignum functions
 LICENSE=		${PERL5_LICENSE}
 
 USE_LANGUAGES=		c
+USE_MULTIARCH=		lib
 
 PERL5_PACKLIST=		auto/Crypt/OpenSSL/Bignum/.packlist
 
