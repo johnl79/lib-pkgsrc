@@ -21,7 +21,10 @@ WRAPPER_TARGETS+=	${SPECS_LIBGCC}
 
 GCC_SUBPREFIX=		gcc47
 GCC_PREFIX=		${BUILDLINK_PREFIX.gcc47-libs}/${GCC_SUBPREFIX}
-GCC_TARGET_MACHINE?= 	${MACHINE_GNU_PLATFORM}
+# For multiarch we need a consistent directory which does not change based
+# upon ABI.
+GCC_TARGET_MACHINE?= 	runtime
+#GCC_TARGET_MACHINE?= 	${MACHINE_GNU_PLATFORM}
 
 # XXX: Using %M requires patched version of gcc (e.g. lang/gcc47)
 ${SPECS_LIBGCC}:
