@@ -41,6 +41,11 @@ bin='@PERL5_PREFIX@/bin@BINARCHSUFFIX@'
 sitebin='@PERL5_SITEBIN@'
 vendorbin='@PERL5_VENDORBASE@/bin'
 
+# Paths required for multiarch. XXX: arch-specific dirs are still used in
+# some places.
+perlpath="#!@PERL5_PREFIX@/bin/perl"
+startperl="#!@PERL5_PREFIX@/bin/perl"
+
 # Put the API-specific files into API-specific directories instead
 # of the default version-specific directories.
 privlib='@PERL5_PRIVLIB@'
