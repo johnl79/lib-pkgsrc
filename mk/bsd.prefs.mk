@@ -516,11 +516,6 @@ APPEND_ELF=		elf
 .  endif
 .endif
 
-# Multi-architecture support
-.if defined(MULTIARCH) && !empty(MULTIARCH:M[Yy][Ee][Ss]) && defined(USE_MULTIARCH)
-_MULTIARCH=	YES
-.endif
-
 PKG_INSTALLATION_TYPES?= overwrite
 # This is a whitespace-separated list of installation types supported
 # by the package.

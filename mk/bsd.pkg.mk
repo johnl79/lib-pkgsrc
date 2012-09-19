@@ -98,8 +98,9 @@ PKGWILDCARD?=		${PKGBASE}-[0-9]*
 SVR4_PKGNAME?=		${PKGNAME}
 WRKSRC?=		${WRKDIR}/${DISTNAME}
 
-# Turn on multi-architecture support.
-.if defined(_MULTIARCH)
+# Multi-architecture support
+.if !empty(MULTIARCH:M[Yy][Ee][Ss]) && defined(USE_MULTIARCH)
+_MULTIARCH=     	YES
 BINARCHSUFFIX=		${BINARCHSUFFIX.${ABI}}
 INCARCHSUFFIX=		${INCARCHSUFFIX.${ABI}}
 LIBARCHSUFFIX=		${LIBARCHSUFFIX.${ABI}}

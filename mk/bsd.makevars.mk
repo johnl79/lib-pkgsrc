@@ -30,7 +30,7 @@ _REV_ALL_PHASES=	package stage-install build configure wrapper	\
 # file.
 #
 .for _phase_ in ${_REV_ALL_PHASES}
-.  if defined(_MULTIARCH)
+.  if !empty(MULTIARCH:M[Yy][Ee][Ss])
 _MAKEVARS_MK.${_phase_}=	${WRKDIR}/.${_phase_}_makevars-${ABI}.mk
 .  else
 _MAKEVARS_MK.${_phase_}=	${WRKDIR}/.${_phase_}_makevars.mk
