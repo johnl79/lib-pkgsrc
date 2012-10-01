@@ -76,7 +76,7 @@ INFO_FILES=		yes
 
 # Dynamically determine the "replacement" headers for bits needed by
 # Heimdal but are missing in the base system and add them to the PLIST.
-.if defined(MULTIARCH)
+.if !empty(MULTIARCH:M[Yy][Ee][Ss])
 ROKENDIR=	${WRKSRC}-${MULTIARCH_ABIS:C/ .*//W}/lib/roken
 .else
 ROKENDIR=	${WRKSRC}/lib/roken
