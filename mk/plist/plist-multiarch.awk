@@ -104,6 +104,6 @@ PLIST_MULTIARCH_ENABLED && (/[$][{](BIN|INC|LIB)ARCHSUFFIX[}]/) {
 	next
 }
 
-/[$][{](BIN|INC|LIB)LIBARCHSUFFIX[}]/ {
+/[$][{](BIN|INC|LIB)ARCHSUFFIX[}]/ {
 	gsub(/[$][{](BIN|INC|LIB)ARCHSUFFIX[}]/, "")
 }
