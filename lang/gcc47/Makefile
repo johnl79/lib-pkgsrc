@@ -38,6 +38,11 @@ INFO_FILES=		yes
 UNLIMIT_RESOURCES+=	datasize
 UNLIMIT_RESOURCES+=	stacksize
 
+SUBST_CLASSES+=		prefix
+SUBST_STAGE.prefix=	pre-configure
+SUBST_FILES.prefix=	gcc/config/sol2-bi.h gcc/config/sol2.h
+SUBST_SED.prefix=	-e "s,@PREFIX@,${PREFIX},g"
+
 .include "../../mk/bsd.prefs.mk"
 
 LANGS=			c
