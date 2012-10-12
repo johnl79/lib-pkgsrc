@@ -696,7 +696,7 @@ PKG_OPTIONS?=		# empty
 .if ${X11_TYPE} != "modular" && defined(USE_X11)
 PREPEND_PATH+=		${X11BASE}/bin
 .endif
-PREPEND_PATH+=		${LOCALBASE}/bin${BINARCHSUFFIX}
+PREPEND_PATH+=		${LOCALBASE}/bin
 
 # Wrapper framework definitions
 .include "wrapper/wrapper-defs.mk"
