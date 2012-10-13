@@ -42,6 +42,8 @@ PKGCONFIG_OVERRIDE+=	lib/pathplan/libpathplan.pc.in
 PKGCONFIG_OVERRIDE+=	lib/xdot/libxdot.pc.in
 XAW_TYPE=		standard
 
+MULTIARCH_DIRS.lib=	# defined in PLIST
+
 REPLACE_INTERPRETER+=	lua
 REPLACE.lua.old=	.*lua
 REPLACE.lua.new=	${PREFIX}/bin/lua
