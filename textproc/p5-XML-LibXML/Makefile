@@ -12,6 +12,8 @@ HOMEPAGE=	http://search.cpan.org/dist/XML-LibXML/
 COMMENT=	Perl interface to the libxml2 library
 LICENSE=	${PERL5_LICENSE}
 
+USE_MULTIARCH=	lib
+
 DEPENDS+=	p5-XML-SAX>=0.11:../../textproc/p5-XML-SAX
 DEPENDS+=	p5-XML-NamespaceSupport>=1.07:../../textproc/p5-XML-NamespaceSupport
 
