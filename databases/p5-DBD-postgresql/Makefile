@@ -11,6 +11,8 @@ HOMEPAGE=	http://search.cpan.org/dist/DBD-Pg/
 COMMENT=	Perl DBI/DBD driver for PostgreSQL databases
 LICENSE=	${PERL5_LICENSE}
 
+USE_MULTIARCH=	lib
+
 DEPENDS+=	{p5-version-[0-9]*,perl>=5.10.0}:../../devel/p5-version
 
 PKG_INSTALLATION_TYPES=	overwrite pkgviews
@@ -18,7 +20,7 @@ PKG_INSTALLATION_TYPES=	overwrite pkgviews
 PERL5_PACKLIST=	auto/DBD/Pg/.packlist
 
 POSTGRES_INCLUDE=	${PGSQL_PREFIX}/include/postgresql
-POSTGRES_LIB=		${PGSQL_PREFIX}/lib
+POSTGRES_LIB=		${PGSQL_PREFIX}/lib${LIBARCHSUFFIX}
 MAKE_ENV+=		POSTGRES_INCLUDE=${POSTGRES_INCLUDE:Q}
 MAKE_ENV+=		POSTGRES_LIB=${POSTGRES_LIB:Q}
 REPLACE_PERL+=		testme.tmp.pl
