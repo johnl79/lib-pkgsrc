@@ -15,8 +15,6 @@ LICENSE=		modified-bsd
 
 PKG_INSTALLATION_TYPES=	overwrite pkgviews
 
-USE_MULTIARCH=		lib
-
 PERL5_PACKLIST=		auto/Socket6/.packlist
 
 # supports IPv6 (actually, AF-independent)

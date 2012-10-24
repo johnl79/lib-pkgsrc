@@ -11,8 +11,6 @@ HOMEPAGE=	http://search.cpan.org/dist/Math-BigInt-GMP/
 COMMENT=	Perl module for arbitrary size integer math via the GMP library
 LICENSE=	${PERL5_LICENSE}
 
-USE_MULTIARCH=	lib
-
 PERL5_REQD+=		5.14.2 # for Math::BigInt 1.997
 PERL5_PACKLIST=		auto/Math/BigInt/GMP/.packlist
 

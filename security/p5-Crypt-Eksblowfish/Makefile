@@ -19,8 +19,6 @@ BUILD_DEPENDS+=		{perl>=5.10.0,p5-ExtUtils-CBuilder>=0.15}:../../devel/p5-ExtUti
 
 PKG_INSTALLATION_TYPES=	overwrite pkgviews
 
-USE_MULTIARCH=		lib
-
 CRYPTO=			YES
 USE_LANGUAGES=		c
 PERL5_MODULE_TYPE=	Module::Build

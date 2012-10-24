@@ -34,6 +34,10 @@
 
 MULTIARCH_DIRS.lib=	# PERL5_INSTALLVENDORARCH
 
+.if !empty(USE_LANGUAGES)
+USE_MULTIARCH=		lib
+.endif
+
 .if !defined(PERL5_MODULE_MK)
 PERL5_MODULE_MK=	# defined
 

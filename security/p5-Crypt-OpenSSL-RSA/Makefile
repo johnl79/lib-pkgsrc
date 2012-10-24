@@ -19,7 +19,6 @@ DEPENDS+=		p5-Crypt-OpenSSL-Bignum-[0-9]*:../../security/p5-Crypt-OpenSSL-Bignum
 DEPENDS+=		p5-Crypt-OpenSSL-Random-[0-9]*:../../security/p5-Crypt-OpenSSL-Random
 
 USE_LANGUAGES=		c
-USE_MULTIARCH=		lib
 
 PERL5_PACKLIST=		auto/Crypt/OpenSSL/RSA/.packlist
 

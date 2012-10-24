@@ -14,7 +14,6 @@ COMMENT=		Perl5 wrapper module for OpenSSL pseudo-random number generator
 LICENSE=		${PERL5_LICENSE}
 
 USE_LANGUAGES=		c
-USE_MULTIARCH=		lib
 
 PERL5_PACKLIST=		auto/Crypt/OpenSSL/Random/.packlist
 
