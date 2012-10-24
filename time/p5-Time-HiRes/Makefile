@@ -15,6 +15,7 @@ LICENSE=		${PERL5_LICENSE}
 PKG_INSTALLATION_TYPES=	overwrite pkgviews
 
 USE_LANGUAGES=		c
+USE_MULTIARCH=		lib
 PERL5_PACKLIST=		auto/Time/HiRes/.packlist
 
 .include "../../lang/perl5/module.mk"
