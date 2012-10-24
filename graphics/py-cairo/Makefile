@@ -21,7 +21,7 @@ USE_TOOLS+=		pkg-config
 GNU_CONFIGURE=		yes
 CONFIGURE_ENV+=		PYTHON=${PYTHONBIN:Q}
 
-MULTIARCH_DIRS.lib=	lib ${PYSITELIB.32}
+MULTIARCH_DIRS.lib=	# manually defined in PLIST
 
 PKGCONFIG_OVERRIDE+=	pycairo.pc.in
 PY_PATCHPLIST=		yes
