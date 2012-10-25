@@ -32,16 +32,16 @@
 
 .include "../../lang/perl5/license.mk"
 
+.if !defined(PERL5_MODULE_MK)
+PERL5_MODULE_MK=	# defined
+
+.include "../../mk/bsd.prefs.mk"
+
 MULTIARCH_DIRS.lib=	# PERL5_INSTALLVENDORARCH
 
 .if !empty(USE_LANGUAGES)
 USE_MULTIARCH=		lib
 .endif
-
-.if !defined(PERL5_MODULE_MK)
-PERL5_MODULE_MK=	# defined
-
-.include "../../mk/bsd.prefs.mk"
 
 PERL5_MODULE_TYPE?=		MakeMaker
 
