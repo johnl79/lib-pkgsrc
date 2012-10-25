@@ -36,6 +36,7 @@
 PERL5_MODULE_MK=	# defined
 
 .include "../../mk/bsd.prefs.mk"
+.include "../../mk/compiler.mk"
 
 MULTIARCH_DIRS.lib=	# PERL5_INSTALLVENDORARCH
 
