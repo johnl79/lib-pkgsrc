@@ -13,6 +13,7 @@ LICENSE=	gnu-gpl-v2
 MAKE_JOBS_SAFE=	no
 
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		lib
 USE_TOOLS+=		perl:run
 USE_LANGUAGES+=		c c++
 USE_GNU_READLINE=	yes	# rl_save_prompt()
