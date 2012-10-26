@@ -31,6 +31,8 @@ CONFIGURE_ARGS+=	--with-gts=no
 # build fails when PHP and/or Ruby are also installed
 CONFIGURE_ENV+=		ac_cv_prog_PHP=
 CONFIGURE_ENV+=		ac_cv_prog_RUBY=
+# Not ideal but configure hardcodes paths
+CONFIGURE_ENV+=		LIBPOSTFIX=${LIBARCHSUFFIX}
 CPPFLAGS+=		-DNO_POSTSCRIPT_ALIAS=1
 PKGCONFIG_OVERRIDE+=	lib/cdt/libcdt.pc.in
 PKGCONFIG_OVERRIDE+=	lib/cgraph/libcgraph.pc.in
