@@ -21,16 +21,6 @@ COMMENT=	Berkeley DB version 4 from Oracle
 
 PKG_INSTALLATION_TYPES=	overwrite pkgviews
 
-.include "options.mk"
-
-SUBST_CLASSES+=		docs
-SUBST_MESSAGE.docs=	Configuring documentation installation
-SUBST_STAGE.docs=	post-patch
-SUBST_FILES.docs=	dist/Makefile.in
-SUBST_SED.docs=		-e 's,@install_docs@,${INSTALL_DOCS},'
-
-PLIST_VARS+=		docs
-
 USE_LANGUAGES=		c c++
 USE_LIBTOOL=		yes
 USE_TOOLS+=		pax
@@ -53,6 +43,16 @@ PTHREAD_OPTS+=		native
 .include "../../mk/pthread.buildlink3.mk"
 
 INSTALLATION_DIRS=	include/db4 lib share/doc/db4
+
+.include "options.mk"
+
+SUBST_CLASSES+=		docs
+SUBST_MESSAGE.docs=	Configuring documentation installation
+SUBST_STAGE.docs=	post-patch
+SUBST_FILES.docs=	dist/Makefile.in
+SUBST_SED.docs=		-e 's,@install_docs@,${INSTALL_DOCS},'
+
+PLIST_VARS+=		docs
 
 post-install:
 	chown -R ${DOCOWN}:${DOCGRP} ${DESTDIR}${PREFIX}/share/doc/db4
