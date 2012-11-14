@@ -109,12 +109,17 @@ if $test -n "@SYSLIBPATH@"; then
 	glibpth="@SYSLIBPATH@"
 fi
 
-# Strip /usr/local/lib... from ldflags
+# Strip /usr/local/lib... from ldflags, unless LOCALBASE=/usr/local
+case "@LOCALBASE@" in
+/usr/local) ;;
+*)
 case "\$ldflags" in */usr/local/lib*)
 	set \`echo "X \$ldflags " | sed 's, [^ ]*/usr/local/lib[^ ]* , ,g'\`
 	shift
 	ldflags="\$*"
 	;;
+esac
+;;
 esac
 
 # Strip gdbm from libswanted
