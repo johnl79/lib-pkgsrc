@@ -74,11 +74,6 @@ MAKE_ENV+=		ac_cv_func_clock_gettime=yes
 CONFIGURE_ARGS+=	--disable-bootstrap
 .endif
 
-SUBST_CLASSES+=		vars
-SUBST_STAGE.vars=	pre-configure
-SUBST_FILES.vars=	gcc/config/sol2-bi.h gcc/config/sol2.h
-SUBST_VARS.vars=	PREFIX
-
 .include "options.mk"
 
 # ${WRKSRC}/fixincludes/ looks for sed and compiles the path to sed into
@@ -102,20 +97,11 @@ CONFIGURE_ARGS+=	--with-gnu-as --with-as=/usr/sfw/bin/gas
 .  elif exists(/usr/ccs/bin/as)
 CONFIGURE_ARGS+=	--without-gnu-as --with-as=/usr/ccs/bin/as
 .  else
-.    if !empty(PKGPATH:Mlang/gcc47-compiler)
 BUILDLINK_DEPMETHOD.binutils=	full
-.    endif
 .    include "../../devel/binutils/buildlink3.mk"
 CONFIGURE_ARGS+=	--with-gnu-as --with-as=${PREFIX}/bin/gas
 .  endif
 .endif
-
-FILES_SUBST+=		MACHINE_ARCH=${MACHINE_ARCH}
-
-SUBST_CLASSES+=		paths
-SUBST_STAGE.paths=	pre-configure
-SUBST_FILES.paths=	gcc/config/sol2-bi.h  gcc/config/sol2.h
-SUBST_SED.paths=	-e 's,@PREFIX@,${PREFIX},g'
 
 pre-configure:
 	${RUN} cd ${WRKSRC} && ${MKDIR} ${OBJDIR}
