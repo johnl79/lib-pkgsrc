@@ -14,7 +14,7 @@ BUILTIN_FIND_FILES.H_CURSES=	/usr/include/curses.h
 ###
 .if !defined(IS_BUILTIN.curses)
 IS_BUILTIN.curses=	no
-.  if empty(H_CURSES:M${LOCALBASE}/*) && exists(${H_CURSES})
+.  if exists(${H_CURSES})
 IS_BUILTIN.curses=	yes
 .  endif
 .endif

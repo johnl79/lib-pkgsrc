@@ -489,6 +489,14 @@ BUILDLINK_LDFLAGS+=	${COMPILER_RPATH_FLAG}${X11BASE}/lib${LIBABISUFFIX}
 .  endif
 .endif
 
+.if ${ABI} == "32"
+BUILDLINK_LDFLAGS+=	-L/system/usr/lib
+BUILDLINK_LDFLAGS+=	${COMPILER_RPATH_FLAG}/system/usr/lib
+.else
+BUILDLINK_LDFLAGS+=	-L/system/usr/lib/amd64
+BUILDLINK_LDFLAGS+=	${COMPILER_RPATH_FLAG}/system/usr/lib/amd64
+.endif
+
 CFLAGS?=	# empty
 CPPFLAGS?=	# empty
 CXXFLAGS?=	# empty
@@ -804,6 +812,8 @@ _BLNK_PASSTHRU_DIRS+=	${PREFIX}
 # Allow any directories specified by the package or user.
 #
 _BLNK_PASSTHRU_DIRS+=	${BUILDLINK_PASSTHRU_DIRS}
+_BLNK_PASSTHRU_DIRS+=	/system/usr/lib
+_BLNK_PASSTHRU_DIRS+=	/system/usr/lib/amd64
 #
 # Strip out /usr, /usr/include, and /usr/lib as they're always
 # automatically added to all of the search paths.  Also strip out
@@ -846,7 +856,9 @@ _BLNK_PASSTHRU_RPATHDIRS+=	${BUILDLINK_PASSTHRU_RPATHDIRS}
 # Strip out /usr/lib (and /usr/lib${LIBABISUFFIX}}) as it's always 
 # automatically in the runtime library search path.
 #
+.if ${LOCALBASE} != "/usr"
 _BLNK_PASSTHRU_RPATHDIRS:=	${_BLNK_PASSTHRU_RPATHDIRS:N/usr/lib:N/usr/lib${LIBABISUFFIX}}
+.endif
 
 _BLNK_MANGLE_DIRS=	# empty
 _BLNK_MANGLE_DIRS+=	${BUILDLINK_DIR}
