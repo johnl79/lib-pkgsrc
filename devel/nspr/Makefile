@@ -21,6 +21,7 @@ GNU_CONFIGURE=		yes
 GNU_CONFIGURE_LIBSUBDIR=nspr
 CONFIGURE_DIRS=		nsprpub
 
+USE_GCC_RUNTIME=	yes
 USE_TOOLS+=		autoconf213 gmake perl
 REPLACE_PERL+=		nsprpub/pr/src/misc/compile-et.pl
 
