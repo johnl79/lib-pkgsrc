@@ -51,6 +51,7 @@
 #include "pscan.h"
 
 int verbosity;
+int limited_scan;
 
 static const char *bmake_path;
 static const char *output_file;
