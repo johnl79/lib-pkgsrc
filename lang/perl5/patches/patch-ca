@@ -1,7 +1,17 @@
 $NetBSD: patch-ca,v 1.12 2012/10/03 19:59:47 adam Exp $
 
+Don't go looking in local directories.
+
 --- Configure.orig	2012-08-03 17:35:26.000000000 +0000
 +++ Configure
+@@ -1332,6 +1332,7 @@
+ : Possible local library directories to search.
+ loclibpth="/usr/local/lib /opt/local/lib /usr/gnu/lib"
+ loclibpth="$loclibpth /opt/gnu/lib /usr/GNU/lib /opt/GNU/lib"
++loclibpth=''
+ 
+ : general looking path for locating libraries
+ glibpth="/lib /usr/lib $xlibpth"
 @@ -3265,13 +3265,14 @@ EOM
  			osvers="$3"
  			;;
@@ -102,7 +112,7 @@ $NetBSD: patch-ca,v 1.12 2012/10/03 19:59:47 adam Exp $
  		;;
  	hpux*)
  		# hpux doesn't like the default, either.
-@@ -9377,6 +9391,13 @@ esac
+@@ -9410,6 +9425,13 @@
  : Check if we want perlio
  useperlio="$define"
  

@@ -36,6 +36,13 @@
 PERL5_MODULE_MK=	# defined
 
 .include "../../mk/bsd.prefs.mk"
+.include "../../mk/compiler.mk"
+
+MULTIARCH_DIRS.lib=	# PERL5_INSTALLVENDORARCH
+
+.if !empty(USE_LANGUAGES)
+USE_MULTIARCH=		lib
+.endif
 
 PERL5_MODULE_TYPE?=		MakeMaker
 

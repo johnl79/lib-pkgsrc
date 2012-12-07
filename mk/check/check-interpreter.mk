@@ -65,6 +65,7 @@ _check-interpreter: error-check .PHONY
 		|| {	${DELAYED_WARNING_MSG} "[check-interpreter.mk] sed(1) failed for \"${DESTDIR}${PREFIX}/$$file\"."; \
 			continue;					\
 		};							\
+		interp=`${ECHO} $$interp | ${SED} -e "s;${PREFIX}/\(s*\)bin/;${PREFIX}/\1bin${BINARCHSUFFIX}/;"`; \
 		case "$$interp" in					\
 		"") continue;;						\
 		/bin/env|/usr/bin/env) if [ -x "$$file" ]; then		\

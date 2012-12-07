@@ -13,6 +13,7 @@ LICENSE=	apache-2.0
 PKG_INSTALLATION_TYPES=	overwrite pkgviews
 
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		bin lib
 USE_TOOLS+=		pkg-config
 PKGCONFIG_OVERRIDE+=	apr.pc.in
 GNU_CONFIGURE=		yes
