@@ -18,6 +18,7 @@ INSTALL_DIRS=	util/cairo-gobject
 
 USE_LANGUAGES+=		c99
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		lib
 USE_PKGLOCALEDIR=	yes
 USE_TOOLS+=		pkg-config
 PKGCONFIG_OVERRIDE+=	src/cairo.pc.in src/cairo-features.pc.in
@@ -25,7 +26,7 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--enable-pdf
 CONFIGURE_ARGS+=	--enable-ps
 
-INSTALLATION_DIRS+=	lib/pkgconfig
+INSTALLATION_DIRS+=	lib${LIBARCHSUFFIX}/pkgconfig
 
 .if exists(/System/Library/Frameworks/Carbon.framework)
 CONFIGURE_ARGS+=        --enable-quartz
@@ -49,7 +50,7 @@ CONFIGURE_ENV+=		ac_cv_type___uint128_t=no
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/src/cairo-gobject.pc \
-		${DESTDIR}${PREFIX}/lib/pkgconfig
+		${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX}/pkgconfig
 
 .include "../../graphics/cairo/buildlink3.mk"
 .include "../../devel/glib2/buildlink3.mk"
