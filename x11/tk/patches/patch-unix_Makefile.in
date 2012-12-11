@@ -1,8 +1,8 @@
 $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
 
---- unix/Makefile.in.orig	2012-11-09 15:15:03.000000000 +0000
-+++ unix/Makefile.in
-@@ -14,6 +14,7 @@ MAJOR_VERSION		= @TK_MAJOR_VERSION@
+--- unix/Makefile.in.orig	Fri Nov  9 15:15:03 2012
++++ unix/Makefile.in	Tue Dec 11 12:09:17 2012
+@@ -14,6 +14,7 @@
  MINOR_VERSION		= @TK_MINOR_VERSION@
  PATCH_LEVEL		= @TK_PATCH_LEVEL@
  LOCALES			= @LOCALES@
@@ -28,7 +28,7 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  
  # Flags to pass to the linker
  LDFLAGS_DEBUG		= @LDFLAGS_DEBUG@
-@@ -245,6 +248,7 @@ TK_STUB_LIB_FLAG	= @TK_STUB_LIB_FLAG@
+@@ -245,6 +248,7 @@
  #TK_STUB_LIB_FLAG	= -ltkstub
  
  TK_LIB_FILE		= @TK_LIB_FILE@
@@ -36,7 +36,7 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  #TK_LIB_FILE		= libtk.a
  
  # Generic lib name used in rules that apply to tcl and tk
-@@ -276,6 +280,8 @@ SHLIB_LD		= @SHLIB_LD@
+@@ -276,6 +280,8 @@
  SHLIB_LD_LIBS		= @SHLIB_LD_LIBS@
  TK_SHLIB_LD_EXTRAS	= @TK_SHLIB_LD_EXTRAS@
  
@@ -45,7 +45,7 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  # Additional search flags needed to find the various shared libraries
  # at run-time.  The first symbol is for use when creating a binary
  # with cc, and the second is for use when running ld directly.
-@@ -546,6 +552,9 @@ PRIVATE_HDRS = $(GENERIC_DIR)/tkInt.h $(
+@@ -546,6 +552,9 @@
  
  DEMOPROGS = browse hello ixset rmt rolodex square tcolor timer widget
  
@@ -55,7 +55,7 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  SHELL_ENV = \
  	@LD_LIBRARY_PATH_VAR@="`pwd`:${TCL_BIN_DIR}:$${@LD_LIBRARY_PATH_VAR@}"; \
  	export @LD_LIBRARY_PATH_VAR@; \
-@@ -569,6 +578,11 @@ ${LIB_FILE}: ${OBJS} ${STUB_LIB_FILE} @L
+@@ -569,6 +578,11 @@
  	rm -f $@
  	@MAKE_LIB@
  
@@ -67,7 +67,7 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  ${STUB_LIB_FILE}: ${STUB_LIB_OBJS}
  	rm -f $@
  	@MAKE_STUB_LIB@
-@@ -686,7 +700,7 @@ install-strip:
+@@ -686,7 +700,7 @@
  # some ranlibs write to current directory, and this might not always be
  # possible (e.g. if installing as root).
  
@@ -76,7 +76,7 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  	@for i in "$(LIB_INSTALL_DIR)" "$(BIN_INSTALL_DIR)" \
  	    "$(PKG_INSTALL_DIR)" "$(CONFIG_INSTALL_DIR)" ; \
  	    do \
-@@ -716,13 +730,20 @@ install-binaries: $(TK_LIB_FILE) $(TK_ST
+@@ -716,7 +730,13 @@
  	    fi
  	@echo "Installing $(LIB_FILE) to $(DLL_INSTALL_DIR)/"
  	@@INSTALL_LIB@
@@ -91,7 +91,7 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  	@if test -f "tk${MAJOR_VERSION}${MINOR_VERSION}.dll"; then \
  	    $(INSTALL_LIBRARY) "tk${MAJOR_VERSION}${MINOR_VERSION}.dll" "$(DLL_INSTALL_DIR)";\
  	    chmod 555 "$(DLL_INSTALL_DIR)/tk${MAJOR_VERSION}${MINOR_VERSION}.dll";\
-@@ -744,6 +759,7 @@
+@@ -723,6 +743,7 @@
  	fi
  	@echo "Installing ${WISH_EXE} as $(BIN_INSTALL_DIR)/wish$(VERSION)${EXE_SUFFIX}"
  	@$(INSTALL_PROGRAM) ${WISH_EXE} "$(BIN_INSTALL_DIR)/wish$(VERSION)${EXE_SUFFIX}"
@@ -99,7 +99,7 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  	@echo "Installing tkConfig.sh to $(CONFIG_INSTALL_DIR)/"
  	@$(INSTALL_DATA) tkConfig.sh "$(CONFIG_INSTALL_DIR)/tkConfig.sh"
  	@if test "$(STUB_LIB_FILE)" != "" ; then \
-@@ -827,7 +848,7 @@ install-doc:
+@@ -827,7 +848,7 @@
  install-headers:
  	@if test "$(@TK_WINDOWINGSYSTEM@_XLIB_HDRS)" != ""; then \
  	    XLIB_INCLUDE_INSTALL_DIR="$(INCLUDE_INSTALL_DIR)"/X11; fi; \
@@ -108,7 +108,7 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  	    do \
  	    if [ -n "$$i" -a ! -d "$$i" ] ; then \
  		echo "Making directory $$i"; \
-@@ -836,9 +857,12 @@ install-headers:
+@@ -836,9 +857,12 @@
  		fi; \
  	    done;
  	@echo "Installing header files to $(INCLUDE_INSTALL_DIR)/";
