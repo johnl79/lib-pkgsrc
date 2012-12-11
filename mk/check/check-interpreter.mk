@@ -65,7 +65,6 @@ _check-interpreter: error-check .PHONY
 		|| {	${DELAYED_WARNING_MSG} "[check-interpreter.mk] sed(1) failed for \"${DESTDIR}${PREFIX}/$$file\"."; \
 			continue;					\
 		};							\
-		interp=`${ECHO} $$interp | ${SED} -e "s;${PREFIX}/\(s*\)bin/;${PREFIX}/\1bin${BINARCHSUFFIX}/;"`; \
 		case "$$interp" in					\
 		"") continue;;						\
 		/bin/env|/usr/bin/env) if [ -x "$$file" ]; then		\
@@ -74,6 +73,11 @@ _check-interpreter: error-check .PHONY
 				${DELAYED_WARNING_MSG} "[check-interpreter.mk] The interpreter \"$$interp\" of \"${DESTDIR}${PREFIX}/$$file\" is not allowed."; \
 			fi;						\
 			continue;;					\
+		esac;							\
+									\
+		case "$$interp" in					\
+		*${PREFIX}/*bin${BINARCHSUFFIX}/*) ;;			\
+		*) interp=`${ECHO} $$interp | ${SED} -e "s;${PREFIX}/\(s*\)bin/;${PREFIX}/\1bin${BINARCHSUFFIX}/;"` ;; \
 		esac;							\
 									\
 		if { [ ! -f ${DESTDIR:Q}"$$interp" ] &&			\
