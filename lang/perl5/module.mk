@@ -39,13 +39,13 @@ PERL5_MODULE_MK=	# defined
 .include "../../mk/compiler.mk"
 
 #
-# Define MULTIARCH by default if compiling a module and not already enabled,
-# packages which include this fragment should set USE_MULTIARCH themselves so
-# that the default MULTIARCH_DIRS is retained.
+# Automatically handle multiarch of perl modules.  The multiarch library
+# dirs are under PERL5_INSTALLVENDORARCH so ensure that lib/perl5 is not
+# expanded.
 #
-.if !empty(USE_LANGUAGES) && !defined(USE_MULTIARCH)
-USE_MULTIARCH=		lib
-MULTIARCH_DIRS.lib=	# PERL5_INSTALLVENDORARCH
+.if !empty(USE_LANGUAGES)
+USE_MULTIARCH=			lib
+MULTIARCH_SKIP_DIRS.lib=	lib/perl5
 .endif
 
 PERL5_MODULE_TYPE?=		MakeMaker

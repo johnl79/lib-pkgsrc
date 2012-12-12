@@ -14,7 +14,6 @@ CONFLICTS=	ucd-snmp-[0-9]*
 CONFLICTS+=	nocol-[0-9]*	# bin/snmpget bin/snmpwalk
 
 USE_LIBTOOL=		yes
-USE_MULTIARCH=		lib
 GNU_CONFIGURE=		yes
 
 MAKE_ENV+=	OPSYS=${OPSYS}

@@ -44,14 +44,28 @@ BEGIN {
 	PLIST_MULTIARCH_DIRS_lib = ENVIRON["MULTIARCH_DIRS_lib"] ? ENVIRON["MULTIARCH_DIRS_lib"] : ""
 	split(PLIST_MULTIARCH_DIRS_bin, bindirs, " ")
 	split(PLIST_MULTIARCH_DIRS_lib, libdirs, " ")
+	PLIST_MULTIARCH_SKIP_DIRS_bin = ENVIRON["MULTIARCH_SKIP_DIRS_bin"] ? ENVIRON["MULTIARCH_SKIP_DIRS_bin"] : ""
+	PLIST_MULTIARCH_SKIP_DIRS_lib = ENVIRON["MULTIARCH_SKIP_DIRS_lib"] ? ENVIRON["MULTIARCH_SKIP_DIRS_lib"] : ""
+	split(PLIST_MULTIARCH_SKIP_DIRS_bin, skipbindirs, " ")
+	split(PLIST_MULTIARCH_SKIP_DIRS_lib, skiplibdirs, " ")
 }
 
-function replace_arch_dirs(type, dirs, suffixvar)
+function replace_arch_dirs(type, dirs, skipdirs, suffixvar)
 {
 	matched = 0
 	for (dir in dirs) {
 		dirmatch = "^" dirs[dir] "/"
 		if ($0 ~ dirmatch) {
+			skip = 0
+			for (skipdir in skipdirs) {
+				skipdirmatch = "^" skipdirs[skipdir] "/"
+				if ($0 ~ skipdirmatch) {
+					skip = 1
+				}
+			}
+			if (skip) {
+				continue
+			}
 			for (abi in abis) {
 				line = $0
 				matched += gsub(dirmatch, dirs[dir] ENVIRON[suffixvar "_" abis[abi]] "/", line)
@@ -67,13 +81,13 @@ function replace_arch_dirs(type, dirs, suffixvar)
 }
 
 PLIST_MULTIARCH_ENABLED && PLIST_USE_MULTIARCH ~ /bin/ {
-	if (replace_arch_dirs("bin", bindirs, "BINARCHSUFFIX") > 0) {
+	if (replace_arch_dirs("bin", bindirs, skipbindirs, "BINARCHSUFFIX") > 0) {
 		next
 	}
 }
 
 PLIST_MULTIARCH_ENABLED && PLIST_USE_MULTIARCH ~ /lib/ {
-	if (replace_arch_dirs("lib", libdirs, "LIBARCHSUFFIX") > 0) {
+	if (replace_arch_dirs("lib", libdirs, skiplibdirs, "LIBARCHSUFFIX") > 0) {
 		next
 	}
 }
