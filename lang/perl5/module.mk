@@ -38,10 +38,14 @@ PERL5_MODULE_MK=	# defined
 .include "../../mk/bsd.prefs.mk"
 .include "../../mk/compiler.mk"
 
-MULTIARCH_DIRS.lib=	# PERL5_INSTALLVENDORARCH
-
-.if !empty(USE_LANGUAGES)
+#
+# Define MULTIARCH by default if compiling a module and not already enabled,
+# packages which include this fragment should set USE_MULTIARCH themselves so
+# that the default MULTIARCH_DIRS is retained.
+#
+.if !empty(USE_LANGUAGES) && !defined(USE_MULTIARCH)
 USE_MULTIARCH=		lib
+MULTIARCH_DIRS.lib=	# PERL5_INSTALLVENDORARCH
 .endif
 
 PERL5_MODULE_TYPE?=		MakeMaker
