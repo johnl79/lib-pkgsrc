@@ -44,7 +44,7 @@ Multiarch support.
      wchar_t *prog = Py_GetProgramName();
      wchar_t argv0_path[MAXPATHLEN+1];
      wchar_t zip_path[MAXPATHLEN+1];
-+    wchar_t *libarchsuffix = "@LIBARCHSUFFIX@";
++    char *libarchsuffix = "@LIBARCHSUFFIX@";
      int pfound, efound; /* 1 if found; -1 if found build directory */
      wchar_t *buf;
      size_t bufsz;

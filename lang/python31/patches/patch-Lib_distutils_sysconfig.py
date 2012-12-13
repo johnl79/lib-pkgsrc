@@ -3,19 +3,20 @@ $NetBSD$
 Support multiarch.
 
 --- Lib/distutils/sysconfig.py.orig	2012-04-09 23:25:34.000000000 +0000
-+++ Lib/distutils/sysconfig.py	2012-12-13 12:14:50.530986654 +0000
-@@ -122,6 +122,10 @@
++++ Lib/distutils/sysconfig.py	2012-12-13 13:32:48.961309177 +0000
+@@ -122,7 +122,10 @@
          if standard_lib:
              return libpython
          else:
+-            return os.path.join(libpython, "site-packages")
 +            if sys.maxsize > 2**32:
 +                return os.path.join(libpython, "site-packages", "@LIBARCHSUFFIX.64@".lstrip('/')).rstrip('/')
 +            else:
 +                return os.path.join(libpython, "site-packages", "@LIBARCHSUFFIX.32@".lstrip('/')).rstrip('/')
-             return os.path.join(libpython, "site-packages")
      elif os.name == "nt":
          if standard_lib:
-@@ -226,7 +230,10 @@
+             return os.path.join(prefix, "Lib")
+@@ -226,7 +229,10 @@
          return os.path.join(os.path.dirname(os.path.realpath(sys.executable)),
                              "Makefile")
      lib_dir = get_python_lib(plat_specific=1, standard_lib=1)
