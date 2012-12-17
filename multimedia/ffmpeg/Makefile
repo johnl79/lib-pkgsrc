@@ -1,6 +1,6 @@
-# $NetBSD: Makefile,v 1.93 2012/11/09 07:56:26 tron Exp $
+# $NetBSD: Makefile,v 1.95 2012/12/16 13:43:10 wiz Exp $
 
-PKGNAME=	ffmpeg-20121028.${DISTVERSION}
+PKGNAME=	ffmpeg-20121209.${DISTVERSION}
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://ffmpeg.mplayerhq.hu/
