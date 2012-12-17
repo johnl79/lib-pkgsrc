@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.902 2012/12/09 20:37:40 adam Exp $
+# $NetBSD: Makefile,v 1.904 2012/12/17 01:37:55 khorben Exp $
 #
 
 COMMENT=	Packages related to the World Wide Web
@@ -117,6 +117,7 @@ SUBDIR+=	curl
 SUBDIR+=	cvsweb
 SUBDIR+=	dansguardian
 SUBDIR+=	davical
+SUBDIR+=	deforaos-surfer
 SUBDIR+=	dillo
 SUBDIR+=	dojo
 SUBDIR+=	drivel
@@ -517,6 +518,7 @@ SUBDIR+=	php-eaccelerator
 SUBDIR+=	php-fpm
 SUBDIR+=	php-owncloud
 SUBDIR+=	php-phrasea2
+SUBDIR+=	php-soycms
 SUBDIR+=	php-tidy
 SUBDIR+=	php-tiki6
 SUBDIR+=	php-uploadprogress
