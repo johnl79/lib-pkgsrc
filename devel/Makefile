@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.1671 2012/12/12 13:16:46 wiz Exp $
+# $NetBSD: Makefile,v 1.1673 2012/12/17 01:10:06 khorben Exp $
 #
 
 COMMENT=	Development utilities
@@ -154,6 +154,7 @@ SUBDIR+=	darts
 SUBDIR+=	dconf
 SUBDIR+=	dconf-editor
 SUBDIR+=	ddd
+SUBDIR+=	deforaos-libsystem
 SUBDIR+=	dejagnu
 SUBDIR+=	delta
 SUBDIR+=	dev86
@@ -1546,6 +1547,7 @@ SUBDIR+=	silc-toolkit
 SUBDIR+=	slib
 SUBDIR+=	sml-mode
 SUBDIR+=	snappy
+SUBDIR+=	sofia-sip
 SUBDIR+=	sparse
 SUBDIR+=	sparsehash
 SUBDIR+=	spiff
