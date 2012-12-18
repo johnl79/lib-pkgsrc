@@ -75,7 +75,7 @@ main(int argc, char **argv)
 {
 	const char *client_port = NULL, *last_scan = NULL, *master_port = NULL;
 	const char *start_script = NULL;
-	int ch, limited_scan;
+	int ch;
 	struct sigaction sa;
 
 	setprogname("pbulk-scan");
