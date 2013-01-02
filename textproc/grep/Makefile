@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.32 2012/12/06 11:43:24 jperkin Exp $
+# $NetBSD: Makefile,v 1.34 2012/12/31 00:27:37 sbd Exp $
 
 DISTNAME=	grep-2.14
 PKGREVISION=	1
@@ -9,7 +9,7 @@ EXTRACT_SUFX=	.tar.xz
 MAINTAINER=	bouyer@NetBSD.org
 HOMEPAGE=	http://www.gnu.org/software/grep/grep.html
 COMMENT=	GNU grep
-LICENSE=	gnu-gpl-v3
+LICENSE=	gnu-gpl-v3 # or later
 
 USE_PKGLOCALEDIR=	yes
 USE_TOOLS+=		makeinfo msgfmt
@@ -20,7 +20,7 @@ CONFIGURE_ENV+=		MKDIR_P=${INSTALL_DATA_DIR:Q}
 INFO_FILES=		yes
 TEXINFO_REQD=		4.0
 
-INSTALLATION_DIRS=	gnu/bin gnu/man/man1
+INSTALLATION_DIRS=	${PKGGNUDIR}bin ${PKGGNUDIR}${PKGMANDIR}/man1
 
 .include "../../mk/bsd.prefs.mk"
 

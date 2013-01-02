@@ -1,14 +1,14 @@
-# $NetBSD: Makefile,v 1.29 2012/10/08 23:01:26 adam Exp $
+# $NetBSD: Makefile,v 1.31 2012/12/27 17:48:29 ryoon Exp $
 
 PKGNAME?=	${DISTNAME}
 COMMENT?=	GNU editing macros (editor)
 
 DISTNAME=	emacs-22.3
-PKGREVISION=	23
+PKGREVISION=	24
 CATEGORIES=	editors
 MASTER_SITES=	${MASTER_SITE_GNU:=emacs/}
 
-MAINTAINER=	markd@NetBSD.org
+MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://www.gnu.org/software/emacs/emacs.html
 LICENSE=	gnu-gpl-v3
 
