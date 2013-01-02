@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.3 2012/12/13 20:22:44 jperkin Exp $
+# $NetBSD: Makefile,v 1.5 2012/12/25 23:48:47 sbd Exp $
 
 .include "dist.mk"
 
@@ -14,6 +14,7 @@ LICENSE=	python-software-foundation
 CONFLICTS+=	python-[0-9]*
 
 GNU_CONFIGURE=		yes
+CONFIGURE_ENV+=		ac_cv_path_mkdir=${TOOLS_PATH.mkdir:Q}
 CONFIGURE_ARGS+=	--with-threads
 CONFIGURE_ARGS+=	--enable-shared
 CONFIGURE_ARGS+=	OPT=${CFLAGS:M*:Q}
@@ -47,7 +48,7 @@ PY_PLATNAME=	sunos${OS_VERSION:C/\..*//}
 .elif ${OPSYS} == "HPUX"
 PY_PLATNAME=	hp-ux11
 .elif ${OPSYS} == "Linux"
-PY_PLATNAME=	linux2
+PY_PLATNAME=	linux
 .else
 PY_PLATNAME=	${LOWER_OPSYS}${OS_VERSION:C/\..*//}
 .endif
@@ -56,7 +57,7 @@ PLIST_SUBST+=	PY_PLATNAME=${PY_PLATNAME:Q}
 # ossaudiodev is only available on x86 for the following platforms
 PLIST_VARS+=	oss
 .if (${MACHINE_ARCH} == "i386" || ${MACHINE_ARCH} == "x86_64") && \
-    (${PY_PLATNAME} == "linux2" || ${OPSYS} == "FreeBSD")
+    (${PY_PLATNAME} == "linux" || ${OPSYS} == "FreeBSD")
 PLIST.oss=	yes
 .endif
 
