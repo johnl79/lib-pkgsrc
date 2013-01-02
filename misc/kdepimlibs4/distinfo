@@ -1,4 +1,4 @@
-$NetBSD: distinfo,v 1.22 2012/11/11 22:28:28 joerg Exp $
+$NetBSD: distinfo,v 1.24 2012/12/20 23:00:06 joerg Exp $
 
 SHA1 (kdepimlibs-4.8.4.tar.xz) = 34f693ac71896d0d8653fc2a81323d1e91531bb2
 RMD160 (kdepimlibs-4.8.4.tar.xz) = f9804ea6e6d016d879a16f1077e49aeef429ba13

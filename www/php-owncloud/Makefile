@@ -1,7 +1,7 @@
-# $NetBSD: Makefile,v 1.21 2012/12/05 14:51:26 ryoon Exp $
+# $NetBSD: Makefile,v 1.24 2012/12/24 01:40:59 ryoon Exp $
 #
 
-DISTNAME=	owncloud-4.5.4
+DISTNAME=	owncloud-4.5.5
 PKGNAME=	${PHP_PKG_PREFIX}-${DISTNAME}
 CATEGORIES=	www
 MASTER_SITES=	http://owncloud.org/releases/
@@ -31,6 +31,16 @@ USE_TOOLS+=	pax
 
 OC_DIR=		share/owncloud
 INSTALLATION_DIRS=	${OC_DIR}
+
+.include "../../mk/bsd.prefs.mk"
+
+APACHE_USER?=	www
+APACHE_GROUP?=	www
+PKG_GROUPS=	${APACHE_GROUP}
+PKG_USERS=	${APACHE_USER}:${APACHE_GROUP}
+
+PKG_USERS_VARS=		APACHE_USER
+PKG_GROUPS_VARS=	APACHE_GROUP
 
 BUILD_DEFS+=	APACHE_GROUP APACHE_USER
 FILES_SUBST+=	WWWGRP=${APACHE_GROUP} WWWOWN=${APACHE_USER} \
