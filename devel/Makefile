@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.1673 2012/12/17 01:10:06 khorben Exp $
+# $NetBSD: Makefile,v 1.1676 2012/12/29 19:23:58 dholland Exp $
 #
 
 COMMENT=	Development utilities
@@ -266,7 +266,6 @@ SUBDIR+=	guile-gtk
 SUBDIR+=	guile-lib
 SUBDIR+=	guile-slib
 SUBDIR+=	guile-www
-SUBDIR+=	guile16-gtk
 SUBDIR+=	haskell-mode
 SUBDIR+=	hdf
 SUBDIR+=	hdf5
@@ -1341,6 +1340,7 @@ SUBDIR+=	py-hgtools
 SUBDIR+=	py-idle
 SUBDIR+=	py-ipython
 SUBDIR+=	py-ipython012
+SUBDIR+=	py-ipython013
 SUBDIR+=	py-jersey
 SUBDIR+=	py-kjbuckets
 SUBDIR+=	py-kqueue
@@ -1555,7 +1555,6 @@ SUBDIR+=	spin
 SUBDIR+=	splint
 SUBDIR+=	st
 SUBDIR+=	stgit
-SUBDIR+=	stlport
 SUBDIR+=	stooop
 SUBDIR+=	subversion
 SUBDIR+=	subversion-base

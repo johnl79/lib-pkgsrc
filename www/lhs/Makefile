@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.15 2012/10/28 06:30:19 asau Exp $
+# $NetBSD: Makefile,v 1.17 2012/12/26 21:25:57 dholland Exp $
 #
 
 DISTNAME=	lhs-0.1
@@ -17,6 +17,8 @@ BUILD_DEFS+=	IPV6_READY
 
 MAKE_ENV+=	OPENSSL_ROOT=${BUILDLINK_PREFIX.openssl}
 MAKE_ENV+=	DEFAULT_ROOT_DIR=${PREFIX}/share/httpd/htdocs
+
+LIBS.SunOS+=	-lsocket
 
 INSTALLATION_DIRS=	sbin
 
