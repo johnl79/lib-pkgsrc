@@ -13,6 +13,8 @@ HOMEPAGE=	http://www.videolan.org/developers/x264.html
 COMMENT=	GPL licensed H.264 encoder
 LICENSE=	gnu-gpl-v2
 
+USE_MULTIARCH=	lib
+
 .include "../../mk/bsd.prefs.mk"
 
 .if exists(/usr/include/stdlib.h) && ${OPSYS} != "Linux" # XXX should be fine
