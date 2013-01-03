@@ -14,6 +14,7 @@ LICENSE=	mit
 WRKSRC=			${WRKDIR}/icu/source
 USE_TOOLS+=		gmake
 USE_LANGUAGES=		c c++
+USE_MULTIARCH=		lib
 TEST_TARGET=		check
 UNLIMIT_RESOURCES+=	datasize
 GNU_CONFIGURE=		yes
