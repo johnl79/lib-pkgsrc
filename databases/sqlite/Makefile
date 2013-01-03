@@ -12,6 +12,7 @@ COMMENT=		SQL Database Engine in a C Library
 WRKSRC=			${WRKDIR}/sqlite-build
 USE_TOOLS+=		gmake
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		bin lib
 
 GNU_CONFIGURE=		yes
 CONFIGURE_SCRIPT=	../sqlite-2.8.17/configure
