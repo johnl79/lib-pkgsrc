@@ -14,6 +14,7 @@ LICENSE=	modified-bsd
 
 USE_LANGUAGES=		c c++
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		lib
 USE_TOOLS+=		gmake bash:build perl:build
 HAS_CONFIGURE=		yes
 CONFIG_SHELL=		${BASH}
