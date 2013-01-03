@@ -15,6 +15,7 @@ REPLACE.bash.new=	${SH}
 REPLACE_FILES.bash=	run.tests
 
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		bin lib
 GNU_CONFIGURE=		yes
 USE_TOOLS+=		pkg-config
 
