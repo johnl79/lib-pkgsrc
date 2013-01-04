@@ -52,6 +52,7 @@ HAS_CONFIGURE=		yes
 CONFIG_SHELL=		${BASH}
 CONFIGURE_ARGS+=	--enable-pic	# uses libtool's -prefer-pic
 CONFIGURE_ARGS+=	--prefix=${PREFIX}
+CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib${LIBARCHSUFFIX}
 MAKE_ENV+=		SH=${SH:Q}
 
 BUILD_TARGET=		default
