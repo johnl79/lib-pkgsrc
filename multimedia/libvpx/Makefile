@@ -22,6 +22,7 @@ CONFIGURE_ARGS+=	--disable-postproc
 CONFIGURE_ARGS+=	--enable-pic
 CONFIGURE_ARGS+=	--enable-runtime-cpu-detect
 CONFIGURE_ARGS+=	--prefix=${PREFIX}
+CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib${LIBARCHSUFFIX}
 
 .include "../../mk/bsd.prefs.mk"
 
