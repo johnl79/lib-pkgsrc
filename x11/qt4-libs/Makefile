@@ -25,14 +25,14 @@ CONFIGURE_ARGS+=	-no-sql-sqlite
 # kdelibs4 requires openssl support!
 CONFIGURE_ARGS+=	-openssl-linked
 
-INSTALLATION_DIRS=	lib/pkgconfig
+INSTALLATION_DIRS=	lib${LIBARCHSUFFIX}/pkgconfig
 INSTALLATION_DIRS+=	${QTPREFIX}/bin
 INSTALLATION_DIRS+=	${QTPREFIX}/imports/Qt/labs/folderlistmodel
 INSTALLATION_DIRS+=	${QTPREFIX}/imports/Qt/labs/gestures
 INSTALLATION_DIRS+=	${QTPREFIX}/imports/Qt/labs/particles
 INSTALLATION_DIRS+=	${QTPREFIX}/imports/QtWebKit
 INSTALLATION_DIRS+=	${QTPREFIX}/include
-INSTALLATION_DIRS+=	${QTPREFIX}/lib
+INSTALLATION_DIRS+=	${QTPREFIX}/lib${LIBARCHSUFFIX}
 INSTALLATION_DIRS+=	${QTPREFIX}/plugins/accessible
 INSTALLATION_DIRS+=	${QTPREFIX}/plugins/bearer
 INSTALLATION_DIRS+=	${QTPREFIX}/plugins/codecs
@@ -77,12 +77,12 @@ do-install:
 .endfor
 	cd ${DESTDIR}${PREFIX} && find qt4/include -type f -print > ${WRKDIR}/PLIST
 .for lib in Qt3Support QtCore QtDeclarative QtGui QtMultimedia QtNetwork QtOpenGL QtScript QtScriptTools QtSql QtSvg QtTest QtWebKit QtXml QtXmlPatterns jscore webcore
-	${LIBTOOL} --mode=install ${INSTALL_LIB} ${WRKSRC}/lib/lib${lib}.la \
-		${DESTDIR}${QTPREFIX}/lib/
+	${LIBTOOL} --mode=install ${INSTALL_LIB} ${WRKSRC}/lib${LIBARCHSUFFIX}/lib${lib}.la \
+		${DESTDIR}${QTPREFIX}/lib${LIBARCHSUFFIX}/
 	sed	-e "s:${WRKSRC}:${QTPREFIX}:g" \
-		-e "s:${QTPREFIX}/lib/lib\\([A-Za-z3]*\\)\\.la:-l\\1:g" \
+		-e "s:${QTPREFIX}/lib${LIBARCHSUFFIX}/lib\\([A-Za-z3]*\\)\\.la:-l\\1:g" \
 		${WRKSRC}/lib/pkgconfig/${lib}.pc > ${WRKDIR}/${lib}.pc
-	${INSTALL_DATA} ${WRKDIR}/${lib}.pc ${DESTDIR}${PREFIX}/lib/pkgconfig/
+	${INSTALL_DATA} ${WRKDIR}/${lib}.pc ${DESTDIR}${PREFIX}/lib${LIBARCHSUFFIX}/pkgconfig/
 .endfor
 	${INSTALL_DATA} ${WRKSRC}/tools/porting/src/q3porting.xml ${DESTDIR}${QTPREFIX}
 .for plug in qtaccessiblecompatwidgets qtaccessiblewidgets

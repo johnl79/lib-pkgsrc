@@ -22,6 +22,7 @@ PATCHDIR=	${.CURDIR}/../../x11/qt4-libs/patches
 HAS_CONFIGURE=		yes
 USE_LANGUAGES=		c c++
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		lib
 USE_TOOLS+=		gmake
 
 .if empty(PKGNAME:U:Mqt4-libs-*)

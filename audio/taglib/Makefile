@@ -16,6 +16,7 @@ USE_LANGUAGES=		c c++
 USE_CMAKE=		YES
 CMAKE_ARGS=		-DWITH_MP4=ON -DWITH_ASF=ON
 USE_LIBTOOL=		YES
+USE_MULTIARCH=		bin lib
 
 PKGCONFIG_OVERRIDE=	bindings/c/taglib_c.pc.cmake taglib.pc.cmake
 REPLACE_SH=		taglib-config.cmake

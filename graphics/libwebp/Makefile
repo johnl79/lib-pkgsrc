@@ -13,6 +13,7 @@ LICENSE=	modified-bsd
 
 GNU_CONFIGURE=	yes
 USE_LIBTOOL=	yes
+USE_MULTIARCH=	lib
 
 .include "../../mk/compiler.mk"
 # fix PR pkg/45934

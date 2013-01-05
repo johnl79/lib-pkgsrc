@@ -1,8 +1,8 @@
 $NetBSD: patch-af,v 1.24 2010/02/26 03:15:14 taca Exp $
 
 --- Makefile.org.orig	2010-01-27 16:06:36.000000000 +0000
-+++ Makefile.org
-@@ -28,6 +28,7 @@ INSTALLTOP=/usr/local/ssl
++++ Makefile.org	2012-09-04 16:16:48.931826676 +0000
+@@ -28,6 +28,7 @@
  
  # Do not edit this manually. Use Configure --openssldir=DIR do change this!
  OPENSSLDIR=/usr/local/ssl
@@ -10,7 +10,7 @@ $NetBSD: patch-af,v 1.24 2010/02/26 03:15:14 taca Exp $
  
  # NO_IDEA - Define to build without the IDEA algorithm
  # NO_RC4  - Define to build without the RC4 algorithm
-@@ -132,8 +133,8 @@ FIPSCANLIB=
+@@ -132,8 +133,8 @@
  
  BASEADDR=
  
@@ -21,7 +21,7 @@ $NetBSD: patch-af,v 1.24 2010/02/26 03:15:14 taca Exp $
  
  # dirs in crypto to build
  SDIRS=  \
-@@ -153,7 +154,7 @@ TESTS = alltests
+@@ -153,7 +154,7 @@
  
  MAKEFILE= Makefile
  
@@ -30,15 +30,15 @@ $NetBSD: patch-af,v 1.24 2010/02/26 03:15:14 taca Exp $
  MAN1=1
  MAN3=3
  MANSUFFIX=
-@@ -169,6 +170,7 @@ SHARED_SSL=libssl$(SHLIB_EXT)
+@@ -169,6 +170,7 @@
  SHARED_FIPS=
  SHARED_LIBS=
  SHARED_LIBS_LINK_EXTS=
-+LIBRPATH=$(INSTALLTOP)/lib
++LIBRPATH=$(INSTALLTOP)/lib$(LIBARCHSUFFIX)
  SHARED_LDFLAGS=
  
  GENERAL=        Makefile
-@@ -615,7 +617,7 @@ dist:   
+@@ -615,10 +617,10 @@
  dist_pem_h:
  	(cd crypto/pem; $(MAKE) -e $(BUILDENV) pem.h; $(MAKE) clean)
  
@@ -46,8 +46,25 @@ $NetBSD: patch-af,v 1.24 2010/02/26 03:15:14 taca Exp $
 +install: install_docs install_sw
  
  install_sw:
- 	@$(PERL) $(TOP)/util/mkdir-p.pl $(INSTALL_PREFIX)$(INSTALLTOP)/bin \
-@@ -695,35 +697,53 @@ install_docs:
+-	@$(PERL) $(TOP)/util/mkdir-p.pl $(INSTALL_PREFIX)$(INSTALLTOP)/bin \
++	@$(PERL) $(TOP)/util/mkdir-p.pl $(INSTALL_PREFIX)$(INSTALLTOP)/bin$(BINARCHSUFFIX) \
+ 		$(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR) \
+ 		$(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/engines \
+ 		$(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/pkgconfig \
+@@ -654,9 +656,9 @@
+ 					mv -f $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i.new $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i; \
+ 				else \
+ 					c=`echo $$i | sed 's/^lib\(.*\)\.dll\.a/cyg\1-$(SHLIB_VERSION_NUMBER).dll/'`; \
+-					cp $$c $(INSTALL_PREFIX)$(INSTALLTOP)/bin/$$c.new; \
+-					chmod 755 $(INSTALL_PREFIX)$(INSTALLTOP)/bin/$$c.new; \
+-					mv -f $(INSTALL_PREFIX)$(INSTALLTOP)/bin/$$c.new $(INSTALL_PREFIX)$(INSTALLTOP)/bin/$$c; \
++					cp $$c $(INSTALL_PREFIX)$(INSTALLTOP)/bin$(BINARCHSUFFIX)/$$c.new; \
++					chmod 755 $(INSTALL_PREFIX)$(INSTALLTOP)/bin$(BINARCHSUFFIX)/$$c.new; \
++					mv -f $(INSTALL_PREFIX)$(INSTALLTOP)/bin$(BINARCHSUFFIX)/$$c.new $(INSTALL_PREFIX)$(INSTALLTOP)/bin$(BINARCHSUFFIX)/$$c; \
+ 					cp $$i $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i.new; \
+ 					chmod 644 $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i.new; \
+ 					mv -f $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i.new $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/$$i; \
+@@ -695,35 +697,53 @@
  	set -e; for i in doc/apps/*.pod; do \
  		fn=`basename $$i .pod`; \
  		sec=`$(PERL) util/extract-section.pl 1 < $$i`; \

@@ -15,6 +15,7 @@ LICENSE=	isc
 WRKSRC=		${WRKDIR}/libass-0.9.12
 GNU_CONFIGURE=	yes
 USE_LIBTOOL=	yes
+USE_MULTIARCH=	lib
 USE_TOOLS+=	pkg-config
 
 PKGCONFIG_OVERRIDE+=	libass.pc.in

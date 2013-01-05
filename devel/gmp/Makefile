@@ -16,6 +16,7 @@ GNU_CONFIGURE=		yes
 INFO_FILES=		yes
 USE_LANGUAGES=		c c++ c99
 USE_LIBTOOL=		yes
+USE_MULTIARCH=		lib
 USE_TOOLS+=		gm4 autoconf makeinfo
 
 CONFIGURE_ARGS+=	--without-readline
