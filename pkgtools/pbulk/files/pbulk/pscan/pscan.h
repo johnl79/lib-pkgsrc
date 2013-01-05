@@ -49,6 +49,7 @@ struct scan_job {
 
 extern int	 verbosity;
 extern const char *pkgsrc_tree;
+extern int	 limited_scan;
 
 char		*scan_pkglocation(const char *);
 

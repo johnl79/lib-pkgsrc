@@ -45,6 +45,16 @@ PTHREAD_OPTS+=		native
 
 INSTALLATION_DIRS=	include/db4 lib share/doc/db4
 
+.include "options.mk"
+
+SUBST_CLASSES+=		docs
+SUBST_MESSAGE.docs=	Configuring documentation installation
+SUBST_STAGE.docs=	post-patch
+SUBST_FILES.docs=	dist/Makefile.in
+SUBST_SED.docs=		-e 's,@install_docs@,${INSTALL_DOCS},'
+
+PLIST_VARS+=		docs
+
 post-install:
 	chown -R ${DOCOWN}:${DOCGRP} ${DESTDIR}${PREFIX}/share/doc/db4
 
