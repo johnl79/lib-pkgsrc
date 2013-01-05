@@ -59,6 +59,15 @@ $NetBSD: patch-aa,v 1.16 2010/06/02 12:06:22 adam Exp $
  libtso=		$(libtso_base)-$(LIBVERSION)@LIBTSO_MODSUFFIX@
  libtso_static=	$(libtso_base)-$(LIBVERSION).a
  libtso_target=	$(libtso_base)-$(LIBVERSION).la
+@@ -925,7 +925,7 @@ db_verify: db_verify@o@ util_cache@o@ ut
+ # Library and standard utilities install.
+ ##################################################
+ library_install: install_setup
+-library_install: install_include install_lib install_utilities install_docs
++library_install: install_include install_lib install_utilities @install_docs@
+ 
+ uninstall: uninstall_include uninstall_lib uninstall_utilities uninstall_docs
+ 
 @@ -942,11 +942,7 @@ install_include:
  	    $(CHMOD) $(dmode) $(DESTDIR)$(includedir))
  	@cd $(DESTDIR)$(includedir) && $(RM) $(INCDOT)
