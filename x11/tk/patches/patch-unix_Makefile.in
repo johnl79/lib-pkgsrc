@@ -1,7 +1,7 @@
 $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
 
---- unix/Makefile.in.orig	Fri Nov  9 15:15:03 2012
-+++ unix/Makefile.in	Tue Dec 11 12:09:17 2012
+--- unix/Makefile.in.orig	2012-11-09 15:15:03.000000000 +0000
++++ unix/Makefile.in	2013-01-07 17:46:55.087785892 +0000
 @@ -14,6 +14,7 @@
  MINOR_VERSION		= @TK_MINOR_VERSION@
  PATCH_LEVEL		= @TK_PATCH_LEVEL@
@@ -19,6 +19,15 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  
  # Path to the private tk header dir:
  PRIVATE_INCLUDE_DIR	= @PRIVATE_INCLUDE_DIR@
+@@ -120,7 +123,7 @@
+ TK_PKG_DIR		= @TK_PKG_DIR@
+ 
+ # Directory in which to install the pkgIndex.tcl file for loadable Tk
+-PKG_INSTALL_DIR		= $(LIB_INSTALL_DIR)/$(TK_PKG_DIR)
++PKG_INSTALL_DIR		= $(INSTALL_ROOT)$(TK_LIBRARY)
+ 
+ # Package index file for loadable Tk
+ PKG_INDEX		= $(PKG_INSTALL_DIR)/pkgIndex.tcl
 @@ -137,7 +140,7 @@
  #CFLAGS			= $(CFLAGS_DEBUG)
  #CFLAGS			= $(CFLAGS_OPTIMIZE)
@@ -76,7 +85,7 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  	@for i in "$(LIB_INSTALL_DIR)" "$(BIN_INSTALL_DIR)" \
  	    "$(PKG_INSTALL_DIR)" "$(CONFIG_INSTALL_DIR)" ; \
  	    do \
-@@ -716,7 +730,13 @@
+@@ -716,13 +730,20 @@
  	    fi
  	@echo "Installing $(LIB_FILE) to $(DLL_INSTALL_DIR)/"
  	@@INSTALL_LIB@
@@ -91,7 +100,6 @@ $NetBSD: patch-unix_Makefile.in,v 1.2 2012/11/24 21:38:50 adam Exp $
  	@if test -f "tk${MAJOR_VERSION}${MINOR_VERSION}.dll"; then \
  	    $(INSTALL_LIBRARY) "tk${MAJOR_VERSION}${MINOR_VERSION}.dll" "$(DLL_INSTALL_DIR)";\
  	    chmod 555 "$(DLL_INSTALL_DIR)/tk${MAJOR_VERSION}${MINOR_VERSION}.dll";\
-@@ -723,6 +743,7 @@
  	fi
  	@echo "Installing ${WISH_EXE} as $(BIN_INSTALL_DIR)/wish$(VERSION)${EXE_SUFFIX}"
  	@$(INSTALL_PROGRAM) ${WISH_EXE} "$(BIN_INSTALL_DIR)/wish$(VERSION)${EXE_SUFFIX}"
