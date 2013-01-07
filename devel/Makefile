@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.1676 2012/12/29 19:23:58 dholland Exp $
+# $NetBSD: Makefile,v 1.1684 2013/01/07 12:30:36 ryoon Exp $
 #
 
 COMMENT=	Development utilities
@@ -56,6 +56,7 @@ SUBDIR+=	atf-libs
 SUBDIR+=	atk
 SUBDIR+=	atkmm
 SUBDIR+=	autoconf
+SUBDIR+=	autoconf-archive
 SUBDIR+=	autoconf213
 SUBDIR+=	autogen
 SUBDIR+=	automake
@@ -432,6 +433,7 @@ SUBDIR+=	log4shib
 SUBDIR+=	ltsa
 SUBDIR+=	lua-alt-getopt
 SUBDIR+=	lua-filesystem
+SUBDIR+=	lua-lpeg
 SUBDIR+=	lua-lrexlib
 SUBDIR+=	lua-lrexlib-onig
 SUBDIR+=	lua-lrexlib-pcre
@@ -497,6 +499,7 @@ SUBDIR+=	ode
 SUBDIR+=	ogre
 SUBDIR+=	omake
 SUBDIR+=	opal
+SUBDIR+=	open-vcdiff
 SUBDIR+=	opencm
 SUBDIR+=	opengrok
 SUBDIR+=	orc
@@ -1330,6 +1333,7 @@ SUBDIR+=	py-dulwich
 SUBDIR+=	py-expect
 SUBDIR+=	py-fann
 SUBDIR+=	py-filechunkio
+SUBDIR+=	py-flakes
 SUBDIR+=	py-funcparserlib
 SUBDIR+=	py-game
 SUBDIR+=	py-generate
@@ -1353,6 +1357,7 @@ SUBDIR+=	py-msgpack
 SUBDIR+=	py-multiprocessing
 SUBDIR+=	py-nose
 SUBDIR+=	py-ordereddict
+SUBDIR+=	py-pep8
 SUBDIR+=	py-pexpect
 SUBDIR+=	py-pip
 SUBDIR+=	py-pqueue
@@ -1394,6 +1399,7 @@ SUBDIR+=	rdp
 SUBDIR+=	re2c
 SUBDIR+=	readline
 SUBDIR+=	refinecvs
+SUBDIR+=	reposurgeon
 SUBDIR+=	roundup
 SUBDIR+=	rox-lib
 SUBDIR+=	rpc2

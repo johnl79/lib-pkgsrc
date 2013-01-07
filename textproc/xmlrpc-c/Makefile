@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.30 2012/12/16 01:52:36 obache Exp $
+# $NetBSD: Makefile,v 1.31 2013/01/05 10:37:56 ryoon Exp $
 
 DISTNAME=	xmlrpc-c-1.16.44
 # the "super stable" branch
@@ -44,6 +44,8 @@ SUBST_MESSAGE.archdir=	Making multi-arch aware
 SUBST_FILES.archdir=	config.mk.in
 SUBST_SED.archdir=	-e '/PROGRAMINST_DIR/s,bin,bin${BINARCHSUFFIX},'
 SUBST_SED.archdir+=	-e '/LIBINST_DIR/s,lib,lib${LIBARCHSUFFIX},'
+
+LDFLAGS.OpenBSD+=	${PTHREAD_LINKFLAGS}
 
 .include "../../www/curl/buildlink3.mk"
 .include "../../www/libwww/buildlink3.mk"
