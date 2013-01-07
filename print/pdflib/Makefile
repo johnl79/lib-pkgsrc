@@ -1,9 +1,9 @@
-# $NetBSD: Makefile,v 1.32 2012/10/08 13:45:43 asau Exp $
+# $NetBSD: Makefile,v 1.35 2013/01/06 13:39:12 gdt Exp $
 
 .include "Makefile.common"
 
 PKGNAME=		pdflib-${PDFLIB_BASE_VERS}
-PKGREVISION=		13
+PKGREVISION=		14
 COMMENT=		C library to produce PDF files
 
 PKG_INSTALLATION_TYPES=	overwrite pkgviews
