@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.26 2012/10/08 13:45:35 asau Exp $
+# $NetBSD: Makefile,v 1.26.2.2 2013/01/05 00:34:54 gdt Exp $
 
 DISTNAME=	bg5pdf-1.0.0
 PKGREVISION=	12

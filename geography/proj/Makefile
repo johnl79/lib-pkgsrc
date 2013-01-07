@@ -29,6 +29,6 @@ DATUMGRID_FILES= 							\
 	prvi.lla stgeorge.lla stlrnc.lla stpaul.lla ntf_r93.gsb
 
 post-extract:
-	cd ${WRKDIR} &&	${LN} ${DATUMGRID_FILES} ${WRKDIR}/${PKGNAME}/nad
+	cd ${WRKDIR} &&	${LN} ${DATUMGRID_FILES} ${WRKSRC}/nad
 
 .include "../../mk/bsd.pkg.mk"
