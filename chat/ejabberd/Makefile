@@ -13,6 +13,7 @@ LICENSE=	gnu-gpl-v2
 CONFLICTS+=	jabberd-[0-9]*
 
 GNU_CONFIGURE=	yes
+USE_GCC_RUNTIME=yes
 USE_TOOLS+=	gmake
 
 WRKSRC=		${WRKDIR}/${PKGNAME_NOREV}
