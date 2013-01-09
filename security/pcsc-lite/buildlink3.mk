@@ -1,4 +1,4 @@
-# $NetBSD: buildlink3.mk,v 1.4 2012/12/14 23:50:33 pettai Exp $
+# $NetBSD: buildlink3.mk,v 1.6 2013/01/08 22:51:39 pettai Exp $
 
 BUILDLINK_TREE+=	pcsc-lite
 

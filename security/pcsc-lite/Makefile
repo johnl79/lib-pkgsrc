@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.15 2013/01/06 16:02:21 pettai Exp $
+# $NetBSD: Makefile,v 1.17 2013/01/08 22:51:39 pettai Exp $
 #
 
 DISTNAME=	pcsc-lite-1.8.7
