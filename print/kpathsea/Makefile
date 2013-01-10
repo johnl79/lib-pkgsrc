@@ -21,6 +21,7 @@ EXTRACT_ELEMENTS=	${DISTNAME}/build-aux \
 GNU_CONFIGURE=	yes
 INFO_FILES=	yes
 USE_LIBTOOL=	yes
+USE_MULTIARCH=	lib
 USE_TOOLS+=	gmake
 WRKSRC=		${WRKDIR}/${DISTNAME}/texk/kpathsea
 
