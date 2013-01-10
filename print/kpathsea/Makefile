@@ -23,7 +23,9 @@ INFO_FILES=	yes
 USE_LIBTOOL=	yes
 USE_MULTIARCH=	lib
 USE_TOOLS+=	gmake
-WRKSRC=		${WRKDIR}/${DISTNAME}/texk/kpathsea
+# XXX: multiarch
+CONFIGURE_DIRS=	texk/kpathsea
+PATCH_ARGS=	-d ${WRKSRC}/${CONFIGURE_DIRS} --forward --quiet -E ${PATCH_STRIP}
 
 MAKE_FLAGS+=	LIBTOOL=${LIBTOOL:Q}
 
