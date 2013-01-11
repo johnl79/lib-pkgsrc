@@ -38,7 +38,7 @@ PERL5_PACKLIST_DIR=	${PERL5_PACKLIST_DIR_cmd:sh}
 .  else
 PERL5_PACKLIST_DIR?=	${PERL5_INSTALLVENDORARCH}
 .  endif
-_PERL5_REAL_PACKLIST_cmd=	for dir in ${PERL5_PACKLIST_DIR}; do echo $${dir}/${PERL5_PACKLIST}; done
+_PERL5_REAL_PACKLIST_cmd=	for file in ${PERL5_PACKLIST}; do for dir in ${PERL5_PACKLIST_DIR}; do echo $${dir}/$${file}; done; done
 _PERL5_PACKLIST_cmd=		for pl in ${_PERL5_REAL_PACKLIST}; do echo ${DESTDIR}$${pl}; done
 _PERL5_REAL_PACKLIST=	${_PERL5_REAL_PACKLIST_cmd:sh}
 _PERL5_PACKLIST=	${_PERL5_PACKLIST_cmd:sh}
