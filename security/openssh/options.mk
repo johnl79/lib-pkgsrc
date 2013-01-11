@@ -17,7 +17,7 @@ CONFIGURE_ENV+=		ac_cv_search_k_hasafs=no
 
 .if !empty(PKG_OPTIONS:Mhpn-patch)
 PATCHFILES=		openssh-5.8p1-hpn13v11.diff.gz
-PATCH_SITES=		http://www.psc.edu/networking/projects/hpn-ssh/
+PATCH_SITES=		http://www.shatow.net/freebsd/
 PATCH_DIST_STRIP=	-p1
 .endif
 
