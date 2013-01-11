@@ -224,7 +224,7 @@ INSTALL_TARGET=		install-conf install
 INSTALL_MAKE_FLAGS+=	sysconfdir="${EGDIR}"
 
 post-install:
-	${LN} -sf ${LOCALBASE}/libexec/apr/libtool ${DESTDIR}${PREFIX}/share/httpd/build${LIBARCHSUFFIX}
+	${LN} -sf ${LOCALBASE}/libexec${LIBARCHSUFFIX}/apr/libtool ${DESTDIR}${PREFIX}/share/httpd/build${LIBARCHSUFFIX}
 	${LN} -sf ${SBINDIR}/envvars-std ${DESTDIR}${SBINDIR}/envvars
 
 	${INSTALL_SCRIPT} ${WRKDIR}/mkcert ${DESTDIR}${PREFIX}/sbin${BINARCHSUFFIX}
