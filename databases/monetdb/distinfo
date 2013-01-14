@@ -1,0 +1,5 @@
+$NetBSD: distinfo,v 1.67 2012/03/20 21:00:47 adam Exp $
+
+SHA1 (MonetDB-11.13.5.tar.bz2) = bf2d37cc4bb5a623a9fba65bc426ba38a525c808
+RMD160 (MonetDB-11.13.5.tar.bz2) = 756c0d35c58d4404f8b5a4c3e24dea7c68fa55db
+Size (MonetDB-11.13.5.tar.bz2) = 59989881 bytes
