@@ -9,15 +9,8 @@ EXTRACT_SUFX=		.tgz
 MAINTAINER=		mj@mjturner.net
 HOMEPAGE=		http://www.harding.motd.ca/autossh/
 COMMENT=		Monitor and automatically restart SSH sessions and tunnels
-#LICENSE=		autossh
+LICENSE=		gnu-lgpl-v2 
 
 GNU_CONFIGURE=		yes
-CONFIGURE_ARGS+= --prefix="$(DESTDIR)$(PREFIX)"
-
-#SUBST_CLASSES+=		destdir
-#SUBST_STAGE.destdir=	pre-configure
-#SUBST_MESSAGE.destdir=	Reaplacing @DESTDIR@
-#SUBST_FILES.destdir+=	Makefile.in
-#SUBST_VARS.destdir=	DESTDIR
 
 .include "../../mk/bsd.pkg.mk"
