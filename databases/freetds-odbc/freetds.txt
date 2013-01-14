@@ -1,0 +1,76 @@
+Information for freetds-0.91:
+
+Build information:
+ABI=64
+BUILD_DATE=2012-12-15 04:28:24 +0000
+BUILD_HOST=SunOS odbc_test 5.11 joyent_20120906T221231Z i86pc i386 i86pc
+CATEGORIES=databases
+CC_VERSION=gcc-4.7.0
+CFLAGS=-O -O2 -I/opt/local/include -I/opt/local/include/ncurses -I/usr/include
+CMAKE_ARGS=
+CONFIGURE_ARGS=--sysconfdir=/opt/local/etc --datadir=/opt/local/share --with-libiconv-prefix=/opt/local --with-tdsver=7.0 --disable-threadsafe --enable-odbc --with-unixodbc=/opt/local --without-gnutls --with-openssl=/opt/local --with-libiconv-prefix=/opt/local --prefix=/opt/local --build=x86_64-sun-solaris2.11 --host=x86_64-sun-solaris2.11 --mandir=/opt/local/man
+CONFIGURE_ENV=DL_CFLAGS= DL_LDFLAGS= DL_LIBS= LIBTOOL="libtool " INSTALL_INFO= MAKEINFO=/tmp/pkgsrc/databases/freetds/work/.tools/bin/makeinfo FLEX= BISON= AWK=/opt/local/bin/nawk CAT=/usr/bin/cat ac_cv_path_CAT=/usr/bin/cat CHMOD=/usr/bin/chmod CMP=/bin/cmp CP=/bin/cp DIFF=/usr/bin/diff ECHO=echo ac_cv_path_ECHO=echo EGREP=/usr/xpg4/bin/grep\ -E ac_cv_path_EGREP=/usr/xpg4/bin/grep\ -E SETENV=/usr/bin/env ENV_PROG=/usr/bin/env ac_cv_path_ENV=/usr/bin/env FALSE=false ac_cv_path_FALSE=false FIND=/usr/bin/find GREP=/usr/xpg4/bin/grep ac_cv_path_GREP=/usr/xpg4/bin/grep HOSTNAME=/bin/hostname LN=/usr/bin/ln LS=/usr/bin/ls MKDIR=/usr/bin/mkdir\ -p MV=/usr/bin/mv RM=/usr/bin/rm RMDIR=/usr/bin/rmdir SED=/opt/local/bin/nbsed SORT=/usr/bin/sort TAR=/usr/bin/gtar TEST=test ac_cv_path_TEST=test TOUCH=/usr/bin/touch TR=/usr/xpg4/bin/tr TRUE=true ac_cv_path_TRUE=true PKG_CONFIG= PKG_CONFIG_LIBDIR=/tmp/pkgsrc/databases/freetds/work/.buildlink/lib/pkgconfig:/tmp/pkgsrc/databases/freetds/work/.buildlink/share/pkgconfig PKG_CONFIG_LOG=/tmp/pkgsrc/databases/freetds/work/.pkg-config.log PKG_CONFIG_PATH= MAKE=make WRAPPER_DEBUG=no WRAPPER_UPDATE_CACHE=yes CC=gcc CFLAGS=-O\ -O2\ -I/opt/local/include\ -I/opt/local/include/ncurses\ -I/usr/include CPPFLAGS=-I/opt/local/include\ -I/opt/local/include/ncurses\ -I/usr/include CXX=g++ CXXFLAGS=-O\ -O2\ -I/opt/local/include\ -I/opt/local/include/ncurses\ -I/usr/include\ -fpermissive COMPILER_RPATH_FLAG=-Wl,-R F77=gfortran FC=gfortran FFLAGS=-m64 LANG=C LC_COLLATE=C LC_CTYPE=C LC_MESSAGES=C LC_MONETARY=C LC_NUMERIC=C LC_TIME=C LDFLAGS=-L/opt/local/gcc47/lib/gcc/x86_64-sun-solaris2.11/4.7.0\ -Wl,-R/opt/local/gcc47/lib/gcc/x86_64-sun-solaris2.11/4.7.0\ -L/opt/local/gcc47/lib\ -Wl,-R/opt/local/gcc47/lib\ -L/opt/local/lib\ -Wl,-R/opt/local/lib\ -L/usr/lib\ -Wl,-R/usr/lib LINKER_RPATH_FLAG=-R PATH=/tmp/pkgsrc/databases/freetds/work/.wrapper/bin:/tmp/pkgsrc/databases/freetds/work/.buildlink/bin:/tmp/pkgsrc/databases/freetds/work/.gcc/bin:/tmp/pkgsrc/databases/freetds/work/.tools/bin:/opt/local/bin:/opt/local/bin:/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin:/opt/pk/bin:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/bin PREFIX=/opt/local PKG_SYSCONFDIR=/opt/local/etc CXXCPP=cpp HOME=/tmp/pkgsrc/databases/freetds/work/.home CONFIG_SHELL=/usr/bin/bash LIBS= ac_given_INSTALL=/opt/local/bin/install-sh\ -c\ -o\ root\ -g\ root
+CPPFLAGS=   -I/opt/local/include -I/opt/local/include/ncurses -I/usr/include
+CURSES_DEFAULT=ncurses
+FFLAGS=-m64
+HOMEPAGE=http://www.freetds.org/
+LDFLAGS=   -L/opt/local/gcc47/lib/gcc/x86_64-sun-solaris2.11/4.7.0 -Wl,-R/opt/local/gcc47/lib/gcc/x86_64-sun-solaris2.11/4.7.0 -L/opt/local/gcc47/lib -Wl,-R/opt/local/gcc47/lib -L/opt/local/lib -Wl,-R/opt/local/lib -L/usr/lib -Wl,-R/usr/lib
+LICENSE=gnu-lgpl-v2
+LOCALBASE=/opt/local
+MACHINE_ARCH=x86_64
+MACHINE_GNU_ARCH=x86_64
+MAINTAINER=tsarna@NetBSD.org
+NO_BIN_ON_CDROM=
+NO_BIN_ON_FTP=
+NO_SRC_ON_CDROM=
+NO_SRC_ON_FTP=
+OBJECT_FMT=ELF
+OPSYS=SunOS
+OS_VERSION=5.11
+PKGINFODIR=info
+PKGMANDIR=man
+PKGPATH=databases/freetds
+PKGTOOLS_VERSION=20091115
+PKG_OPTIONS=openssl
+PKG_SYSCONFBASEDIR=/opt/local/etc
+PKG_SYSCONFDIR=/opt/local/etc
+PROVIDES=/opt/local/lib/libct.so
+PROVIDES=/opt/local/lib/libct.so.4
+PROVIDES=/opt/local/lib/libct.so.4.0.0
+PROVIDES=/opt/local/lib/libsybdb.so
+PROVIDES=/opt/local/lib/libsybdb.so.5
+PROVIDES=/opt/local/lib/libsybdb.so.5.0.0
+PROVIDES=/opt/local/lib/libtdsodbc.so
+PROVIDES=/opt/local/lib/libtdsodbc.so.0
+PROVIDES=/opt/local/lib/libtdsodbc.so.0.0.0
+REQUIRES=/lib/64/libc.so.1
+REQUIRES=/lib/64/libdl.so.1
+REQUIRES=/lib/64/libm.so.2
+REQUIRES=/lib/64/libmd.so.1
+REQUIRES=/lib/64/libmp.so.2
+REQUIRES=/lib/64/libnsl.so.1
+REQUIRES=/lib/64/libpthread.so.1
+REQUIRES=/lib/64/librt.so.1
+REQUIRES=/lib/64/libsocket.so.1
+REQUIRES=/lib/64/libthread.so.1
+REQUIRES=/opt/local/gcc47/lib/amd64/libgcc_s.so.1
+REQUIRES=/opt/local/lib/libcrypto.so.0.9.8
+REQUIRES=/opt/local/lib/libiconv.so.2
+REQUIRES=/opt/local/lib/libltdl.so.7
+REQUIRES=/opt/local/lib/libncurses.so.5
+REQUIRES=/opt/local/lib/libodbc.so.1
+REQUIRES=/opt/local/lib/libodbcinst.so.1
+REQUIRES=/opt/local/lib/libreadline.so.6
+REQUIRES=/opt/local/lib/libssl.so.0.9.8
+RESTRICTED=
+SSLBASE=/opt/local
+SSLCERTS=/opt/local/etc/openssl/certs
+SSLDIR=/opt/local/etc/openssl
+SSLKEYS=/opt/local/etc/openssl/private
+_PLIST_IGNORE_FILES=
+_USE_DESTDIR=user-destdir
+
+Installed information:
+automatic=yes
+
+
