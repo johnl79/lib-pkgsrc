@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.45 2011/08/19 07:54:04 adam Exp $
 
 DISTNAME=	freetds-0.91
-PKGNAME= freetds_odbc-0.92
+PKGNAME= 	freetds_odbc-0.91
 CATEGORIES=	databases
 MASTER_SITES=	ftp://ftp.ibiblio.org/pub/Linux/ALPHA/freetds/stable/
 
